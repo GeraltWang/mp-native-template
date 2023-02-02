@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
+    "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
+    "t-link": "tdesign-miniprogram/link/link",
+    "my-t-dialog": "../../components/Dialog/index"
+  },
+  "navigationBarTitleText": "登录",
+  "disableScroll":true
+}

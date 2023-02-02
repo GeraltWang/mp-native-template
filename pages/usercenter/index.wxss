@@ -1,0 +1,11 @@
+/* pages/usercenter/index.wxss */
+.nav-title {
+  padding-left: 14rpx;
+  font-weight: 600;
+  font-size: 36rpx;
+  letter-spacing: 2rpx;
+}
+
+.scroll-page {
+  height: 200vh;
+}

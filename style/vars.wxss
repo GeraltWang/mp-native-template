@@ -1,0 +1,9 @@
+page {
+  --bg-color-page: #f3f3fb;
+  --text-color-secondary: #858b92;
+  --text-size-s: 24rpx;
+  --text-size-m: 28rpx;
+  --text-size-l: 32rpx;
+  --text-size-xl: 36rpx;
+  --text-size-xxl: 40rpx;
+}

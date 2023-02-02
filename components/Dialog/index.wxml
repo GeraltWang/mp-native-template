@@ -1,0 +1,15 @@
+<!--components/Dialog/index.wxml-->
+<t-dialog
+  visible="{{ visible }}"
+  title="{{ title }}"
+  content="{{ content }}"
+  confirm-btn="{{ confirmBtn }}"
+  cancel-btn="{{ cancelBtn }}"
+  bind:confirm="confirmDialog"
+  bind:cancel="cancelDialog"
+  bind:close="closeDialog"
+>
+  <view slot="content">
+    <slot name="content"></slot>
+  </view>
+</t-dialog>

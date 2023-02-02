@@ -1,0 +1,45 @@
+/* pages/login/login.wxss */
+.full-page {
+  background: var(--bg-color-page);
+}
+
+.welcome {
+  padding: 60rpx;
+}
+
+.welcome-text {
+  color: var(--text-color-secondary);
+  font-size: var(--text-size-xxl);
+}
+
+.login .t-cell {
+  height: 200rpx;
+}
+
+.policy {
+  padding: 24rpx 0;
+  display: flex;
+  align-items:baseline;
+  flex-wrap: nowrap;
+}
+
+.t-checkbox {
+  background: transparent !important;
+}
+
+.t-checkbox .t-checkbox__border {
+  display: none;
+}
+
+.policy-text {
+  font-size: 14px;
+}
+
+.policy-content {
+  height: 300rpx;
+  margin-top: 66rpx;
+}
+
+.policy-content .t-link {
+  display: inline-block;
+}

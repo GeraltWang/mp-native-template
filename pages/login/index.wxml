@@ -1,0 +1,29 @@
+<!--pages/login/login.wxml-->
+<view class="full-page">
+  <view class="welcome">
+    <text class="welcome-text">欢迎登录MP-Template</text>
+  </view>
+  <view class="login">
+    <t-cell title="微信登录" description="微信用户" bind:click="doLogin" hover arrow>
+      <view class="icon" slot="left-icon">
+        <t-icon name="logo-wechat" color="#00c05a" size="90rpx"></t-icon>
+      </view>
+    </t-cell>
+  </view>
+  <view class="policy">
+    <t-checkbox-group value="{{agree}}" bind:change="handleGroupChange">
+      <t-checkbox value="1" block="{{false}}" icon="rectangle">
+        <view class="policy-text" slot="label">
+          我已阅读并同意
+        </view>
+      </t-checkbox>
+    </t-checkbox-group>
+    <t-link theme="primary" content="《隐私权政策》" />
+    <t-link theme="primary" content="《注册协议》" />
+  </view>
+</view>
+<my-t-dialog visible="{{ dialogVisible }}" title="温馨提示" confirmBtn="{{ confirmBtn }}" cancelBtn="{{ cancelBtn }}" bind:confirm="onDialogConfirm" bind:cancel="onDialogCancel">
+  <scroll-view slot="content" class="policy-content" scroll-y>
+    为了保障您的权益，在使用亿匠小程序之前，请您务必审慎阅读、充分理解<t-link theme="primary" content="《隐私权政策》" />、<t-link theme="primary" content="《注册协议》" />各条款。我们会按照上述协议及政策收集、使用和共享您的个人信息。如您同意，请点击“同意并继续”开始接受我们的服务。
+  </scroll-view>
+</my-t-dialog>
