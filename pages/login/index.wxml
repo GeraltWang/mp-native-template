@@ -4,26 +4,30 @@
     <text class="welcome-text">欢迎登录MP-Template</text>
   </view>
   <view class="login">
-    <t-cell title="微信登录" description="微信用户" bind:click="doLogin" hover arrow>
+    <t-cell title="微信登录" description="微信用户" hover arrow>
       <view class="icon" slot="left-icon">
         <t-icon name="logo-wechat" color="#00c05a" size="90rpx"></t-icon>
       </view>
     </t-cell>
+    <button wx:if="{{!isAgree}}" class="login-btn-cover" bind:tap="doLogin"></button>
+    <button wx:else="" class="login-btn-cover" open-type="getPhoneNumber" bind:getphonenumber="doLogin"></button>
   </view>
   <view class="policy">
-    <t-checkbox-group value="{{agree}}" bind:change="handleGroupChange">
-      <t-checkbox value="1" block="{{false}}" icon="rectangle">
-        <view class="policy-text" slot="label">
-          我已阅读并同意
-        </view>
-      </t-checkbox>
-    </t-checkbox-group>
-    <t-link theme="primary" content="《隐私权政策》" />
-    <t-link theme="primary" content="《注册协议》" />
+    <t-checkbox value="1" block="{{false}}" checked="{{isAgree}}" icon="rectangle" bind:change="onAgreeChange">
+      <view class="policy-text" slot="label">
+        我已阅读并同意
+      </view>
+    </t-checkbox>
+    <t-link theme="primary" content="《隐私权政策》" navigator-props="{{ privacyPolicy }}" />
+    <t-link theme="primary" content="《注册协议》" navigator-props="{{ regPolicy }}" />
   </view>
+  <import src="../../templates/Footer/index"></import>
+  <template is="common-footer"></template>
 </view>
 <my-t-dialog visible="{{ dialogVisible }}" title="温馨提示" confirmBtn="{{ confirmBtn }}" cancelBtn="{{ cancelBtn }}" bind:confirm="onDialogConfirm" bind:cancel="onDialogCancel">
   <scroll-view slot="content" class="policy-content" scroll-y>
-    为了保障您的权益，在使用亿匠小程序之前，请您务必审慎阅读、充分理解<t-link theme="primary" content="《隐私权政策》" />、<t-link theme="primary" content="《注册协议》" />各条款。我们会按照上述协议及政策收集、使用和共享您的个人信息。如您同意，请点击“同意并继续”开始接受我们的服务。
+    为了保障您的权益，在使用小程序之前，请您务必审慎阅读、充分理解
+    <t-link theme="primary" content="《隐私权政策》" />、
+    <t-link theme="primary" content="《注册协议》" />各条款。我们会按照上述协议及政策收集、使用和共享您的个人信息。如您同意，请点击“同意并继续”开始接受我们的服务。
   </scroll-view>
 </my-t-dialog>
