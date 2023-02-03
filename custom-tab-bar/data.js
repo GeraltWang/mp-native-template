@@ -7,6 +7,6 @@ export default [
   {
     icon: 'person',
     text: '个人中心',
-    url: 'pages/usercenter/index'
+    url: 'pages/user-center/index'
   }
 ]

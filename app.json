@@ -2,7 +2,7 @@
   "lazyCodeLoading": "requiredComponents",
   "pages": [
     "pages/home/index",
-    "pages/usercenter/index",
+    "pages/user-center/index",
     "pages/login/index",
     "pages/web-view/index"
   ],
@@ -18,7 +18,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/usercenter/index",
+        "pagePath": "pages/user-center/index",
         "text": "我的"
       }
     ]

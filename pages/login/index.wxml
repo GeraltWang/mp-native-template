@@ -24,6 +24,7 @@
   <import src="../../templates/Footer/index"></import>
   <template is="common-footer"></template>
 </view>
+<!-- 弹窗 -->
 <my-t-dialog visible="{{ dialogVisible }}" title="温馨提示" confirmBtn="{{ confirmBtn }}" cancelBtn="{{ cancelBtn }}" bind:confirm="onDialogConfirm" bind:cancel="onDialogCancel">
   <scroll-view slot="content" class="policy-content" scroll-y>
     为了保障您的权益，在使用小程序之前，请您务必审慎阅读、充分理解
