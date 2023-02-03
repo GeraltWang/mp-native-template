@@ -11,10 +11,10 @@ Page({
   data: {
 
   },
+  // 获取openid
   getUserAuth () {
     this.selectComponent('#my-t-message').showIconMsg('error', '这是一条错误提示通知')
     getWxOpenId(app.globalData)
-    // console.log(getWxOpenId(app.globalData))
   },
   async testMethod () {
     const res = await getMemberInfo()
