@@ -1,0 +1,7 @@
+<template name="common-footer">
+  <view class="common-footer">
+    <view class="common-footer-copyright">
+      Copyright © 2021-2031 TD.All Rights Reserved.
+    </view>
+  </view>
+</template>

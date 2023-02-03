@@ -1,0 +1,6 @@
+.common-footer {
+  text-align: center;
+  color: var(--text-color-secondary);
+  font-size: var(--text-size-s);
+  padding: 20rpx 0;
+}
