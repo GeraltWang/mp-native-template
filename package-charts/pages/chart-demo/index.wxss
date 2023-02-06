@@ -1,0 +1,5 @@
+/* package-charts/pages/chart-demo/index.wxss */
+.container {
+  width: 100vw;
+  height: 300px;
+}

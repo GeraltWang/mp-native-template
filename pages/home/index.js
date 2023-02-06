@@ -20,13 +20,17 @@ Page({
     const res = await getMemberInfo()
     console.log(res)
   },
-
+  goCharts () {
+    wx.navigateTo({
+      url: '/package-charts/pages/chart-demo/index'
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad (options) {
     this.getUserAuth()
-    this.testMethod()
+    // this.testMethod()
   },
 
   /**

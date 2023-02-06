@@ -26,6 +26,14 @@
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon"
   },
+  "subPackages": [
+    {
+      "root": "package-charts",
+      "pages": [
+        "pages/chart-demo/index"
+      ]
+    }
+  ],
   "plugins": {},
   "window": {
     "backgroundTextStyle": "light",

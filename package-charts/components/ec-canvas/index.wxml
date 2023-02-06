@@ -1,0 +1,2 @@
+<!--package-charts/components/ec-canvas/index.wxml-->
+<canvas wx:if="{{isUseNewCanvas}}" type="2d" class="ec-canvas" canvas-id="{{ canvasId }}" bindinit="init" bindtouchstart="{{ ec.disableTouch ? '' : 'touchStart' }}" bindtouchmove="{{ ec.disableTouch ? '' : 'touchMove' }}" bindtouchend="{{ ec.disableTouch ? '' : 'touchEnd' }}"></canvas>
