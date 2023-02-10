@@ -13,6 +13,9 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "useCompilerPlugins": [
+      "sass"
+    ],
     "ignoreUploadUnusedFiles": true
   },
   "condition": {},
