@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "tdesign-miniprogram": "^1.0.0-rc.1"
+    "tdesign-miniprogram": "^1.0.0-rc.1",
+    "mobx-miniprogram": "^4.13.2",
+    "mobx-miniprogram-bindings": "^2.1.5"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
