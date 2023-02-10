@@ -1,0 +1,2 @@
+<!--package-charts/components/my-ec-canvas/index.wxml-->
+<ec-canvas class="my-ec-canvas" id="{{ chartLineId }}" canvas-id="{{ canvasId }}" options="{{ options }}" ec="{{ ec }}"></ec-canvas>

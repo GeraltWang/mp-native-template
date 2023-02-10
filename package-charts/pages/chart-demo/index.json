@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "ec-canvas": "../../components/ec-canvas/index"
+    "my-ec-canvas": "../../components/my-ec-canvas/index"
   }
 }
