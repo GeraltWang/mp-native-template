@@ -1,10 +1,11 @@
 // pages/home/home.js
+import { userBehavior } from '../../behaviors/store/user'
 import { getMemberInfo } from '../../api/model/test'
 import getWxOpenId from '../../utils/wx/getOpenId'
 const app = getApp()
 
 Page({
-
+  behaviors: [userBehavior],
   /**
    * 页面的初始数据
    */
@@ -13,7 +14,7 @@ Page({
   },
   // 获取openid
   getUserAuth () {
-    this.selectComponent('#my-t-message').showIconMsg('error', '这是一条错误提示通知')
+    // this.selectComponent('#my-t-message').showIconMsg('error', '这是一条错误提示通知')
     getWxOpenId(app.globalData)
   },
   async testMethod () {
