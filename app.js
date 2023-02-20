@@ -1,10 +1,17 @@
+/*
+ * @Author: 王昶 wgeralt@outlook.com
+ * @Date: 2023-02-12 22:08:44
+ * @LastEditors: 王昶 wgeralt@outlook.com
+ * @LastEditTime: 2023-02-20 15:20:08
+ * @FilePath: /mp-native-template/app.js
+ * @Description:
+ */
 import updateManager from './utils/wx/updateManager'
 import getPermission from './utils/wx/getPermission'
 import getSystemInfo from './utils/wx/getSystemInfo'
 import { getLocation } from './utils/wx/location'
-import storage from './utils/wx/storage'
 import sysConfig from './config/index'
-import { global } from './store/global'
+import { global } from './store/index'
 import { promisifyAll } from 'miniprogram-api-promise'
 
 const wxp = wx.p = {}
@@ -36,7 +43,9 @@ App({
   async launchApp () {
     try {
       // 获取用户设备信息
-      getSystemInfo()
+      getSystemInfo().then(result => {
+        global.updateSysInfo(result)
+      })
       // 检查用户是否打开了定位
       await getPermission({ code: 'scope.userLocation', name: '位置信息' })
       // 获取用户位置

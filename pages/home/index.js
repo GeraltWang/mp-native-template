@@ -35,8 +35,6 @@ Page({
    */
   onLoad (options) {
     this.initPage()
-    // this.getUserAuth()
-    // this.testMethod()
   },
 
   /**

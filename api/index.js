@@ -1,3 +1,11 @@
+/*
+ * @Author: 王昶 wgeralt@outlook.com
+ * @Date: 2023-02-12 22:08:44
+ * @LastEditors: 王昶 wgeralt@outlook.com
+ * @LastEditTime: 2023-02-20 16:37:58
+ * @FilePath: /mp-native-template/api/index.js
+ * @Description:
+ */
 import sysConfig from '../config/index'
 import storage from '../utils/wx/storage'
 import { showLoading, hideLoading } from '../utils/wx/interaction'
@@ -26,7 +34,10 @@ export const request = ({ url, method, data = {}, options = {} }) => {
       data,
       header: Object.assign(sysConfig.header, options.header),
       success: response => {
-        const { data } = response
+        const { data = {} } = response || {}
+        if (Object.keys(data).length === 0) {
+          reject(new Error('非法的返回值'))
+        }
         if (data.code === 401 || data.code === 403) {
           storage.local.remove('TOKEN')
           storage.local.remove('USER_INFO')

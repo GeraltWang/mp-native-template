@@ -2,6 +2,6 @@
 <t-navbar>
   <view slot="left" class="nav-title">我的</view>
 </t-navbar>
-<view class="scroll-page">
+<view class="full-tab-page">
   <text>pages/usercenter/index.wxml</text>
 </view>
