@@ -1,10 +1,22 @@
+/*
+ * @Author: 王昶 wgeralt@outlook.com
+ * @Date: 2023-02-12 22:08:44
+ * @LastEditors: 王昶 wgeralt@outlook.com
+ * @LastEditTime: 2023-02-20 15:39:20
+ * @FilePath: /mp-native-template/utils/wx/getOpenId.js
+ * @Description:
+ */
 import { getOpenId } from '../../api/model/test'
-import { user } from '../../store/user'
+import { user } from '../../store/index'
+
+let retryCount = 0
 
 /** getWxOpenId
+ * @description: getWxOpenId,调用wx.login成功后，调用后台获取openid方法
  * @param {object} globalData app.js中的globalData
+ * @param {string} maxRetry 重试次数
  */
-const getWxOpenId = async (globalData) => {
+const getWxOpenId = async (globalData, maxRetry = 2) => {
   try {
     const wxRes = await wx.p.login()
     globalData.wxcode = wxRes.code
@@ -13,7 +25,12 @@ const getWxOpenId = async (globalData) => {
     })
     user.updateOpenid(apiRes.data.openid || null)
   } catch (error) {
-    console.log('openid获取失败', error)
+    if (retryCount >= maxRetry) {
+      throw new Error('获取openid超过最大次数')
+    }
+    retryCount++
+    console.log(`openid获取失败, 失败次数:${retryCount}`, `失败原因:${error.message}`)
+    await getWxOpenId(globalData, maxRetry = 2)
   }
 }
 
