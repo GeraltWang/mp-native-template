@@ -45,7 +45,7 @@ Page({
   },
   onDialogConfirm () {
     this.setData({
-      isAgree: false,
+      isAgree: true,
       dialogVisible: false
     })
     storage.local.set('AGREE_POLICY', true)

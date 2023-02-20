@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 15:39:20
+ * @LastEditTime: 2023-02-20 18:00:01
  * @FilePath: /mp-native-template/utils/wx/getOpenId.js
  * @Description:
  */
@@ -23,7 +23,7 @@ const getWxOpenId = async (globalData, maxRetry = 2) => {
     const apiRes = await getOpenId({
       js_code: wxRes.code
     })
-    user.updateOpenid(apiRes.data.openid || null)
+    user.updateOpenid(apiRes.data.openid || null, true)
   } catch (error) {
     if (retryCount >= maxRetry) {
       throw new Error('获取openid超过最大次数')

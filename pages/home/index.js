@@ -1,3 +1,11 @@
+/*
+ * @Author: 王昶 wgeralt@outlook.com
+ * @Date: 2023-02-20 16:41:27
+ * @LastEditors: 王昶 wgeralt@outlook.com
+ * @LastEditTime: 2023-02-20 18:01:06
+ * @FilePath: /mp-native-template/pages/home/index.js
+ * @Description:
+ */
 // pages/home/home.js
 import { userBehavior } from '../../behaviors/store/user'
 import { getMemberInfo } from '../../api/model/test'
@@ -41,7 +49,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady () {
-    this.updateOpenid('hahaha')
+    this.updateOpenid('hahaha', true)
   },
 
   /**
