@@ -7,8 +7,8 @@ export const userBehavior = BehaviorWithStore({
     {
       namespace: 'userStore',
       store: user,
-      fields: ['userInfo'],
-      actions: ['updateUserInfo']
+      fields: ['userInfo', 'openid'],
+      actions: ['updateUserInfo', 'updateOpenid']
     }
   ]
 })
