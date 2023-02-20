@@ -4,10 +4,11 @@ import { showLoading, hideLoading } from '../utils/wx/interaction'
 const app = getApp()
 
 /** request
-   * @param  {接口地址} url
-   * @param  {请求方式} method
-   * @param  {请求参数} data
-   * @param  {请求配置} options
+   * @param {object} data 传入的配置项
+   * @param {string} data.url 接口地址
+   * @param {string} data.method 请求方式
+   * @param {object} data.data 请求参数
+   * @param {object} data.options 请求配置
    */
 export const request = ({ url, method, data = {}, options = {} }) => {
   return new Promise((resolve, reject) => {

@@ -34,7 +34,7 @@ const getSystemInfo = () => {
       if (deviceIdentifier(trimModel, 'MI')) {
         result.isMi = true
       }
-      result.navHeight = result.statusBarHeight + 46
+      result.navHeight = result.statusBarHeight + 44
       result.pageWidth = result.windowWidth
       result.pageHeight = result.windowHeight - result.navHeight
       if (!result.isIOS) {
@@ -42,7 +42,7 @@ const getSystemInfo = () => {
       }
       const capsuleInfo = wx.getMenuButtonBoundingClientRect()
       // 胶囊热区 = 胶囊和状态栏之间的留白 * 2 (保持胶囊和状态栏上下留白一致) * 2(设计上为了更好看) + 胶囊高度
-      const navbarHeight = (capsuleInfo.top - result.statusBarHeight) * 4 + capsuleInfo.height
+      const navbarHeight = (capsuleInfo.top - result.statusBarHeight) * 2 + capsuleInfo.height
       // 写入胶囊数据
       result.capsuleInfo = capsuleInfo
       // 安全区域

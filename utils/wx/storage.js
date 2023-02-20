@@ -19,11 +19,19 @@ export default {
         return null
       }
     },
+    /** set
+     * @param {string} key 数据在本地存储中的键
+     * @param {any} data 需要存储数据
+     * @param {string | number} dateTime 缓存有效期 单位(天)
+     */
     set (key, data, dateTime = sysConfig.storageExpireTime) {
       try {
         const cacheValue = {
           content: data,
-          dateTime: parseInt(dateTime) === 0 ? 0 : new Date().getTime() + parseInt(dateTime) * 24 * 3600 * 1000
+          dateTime:
+            parseInt(dateTime) === 0
+              ? 0
+              : new Date().getTime() + parseInt(dateTime) * 24 * 3600 * 1000
         }
         wx.setStorageSync(`${sysConfig.storagePrefix}${key}`, cacheValue)
       } catch (error) {

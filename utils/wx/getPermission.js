@@ -1,3 +1,8 @@
+/** getPermission
+ * @param {object} data 传入的数据包含 code name
+ * @param {string} data.code 权限code
+ * @param {string} data.name 权限名称(可自定义)
+ */
 const getPermission = ({ code, name }) => {
   return new Promise((resolve, reject) => {
     wx.getSetting({
