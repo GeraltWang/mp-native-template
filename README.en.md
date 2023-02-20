@@ -1,36 +1,35 @@
-# mp-native-template
+<!--
+ * @Author: 王昶 wgeralt@outlook.com
+ * @Date: 2023-02-12 22:08:44
+ * @LastEditors: 王昶 wgeralt@outlook.com
+ * @LastEditTime: 2023-02-20 16:36:47
+ * @FilePath: /mp-native-template/README.en.md
+ * @Description: 
+-->
+# Mp-Native-Template 微信小程序原生开发模板
 
-#### Description
-原生微信小程序开发模板
+Mp-Native-Template 基于微信小程序原生框架进行搭建，集成了[TDesign 微信小程序组件库](https://github.com/Tencent/tdesign-miniprogram)方便开发者快速构建标准化的页面，依赖[mobx-miniprogram](https://github.com/mobxjs/mobx)、[mobx-miniprogram-bindings](https://github.com/mobxjs/mobx)，结合微信小程序behaviors特性，实现可控的全局状态管理和便捷的store数据访问。该开发模板涵盖 UI框架、echarts数据可视化、请求处理&封装、全局状态管理、工具函数等功能，能够帮助开发者应对绝大多数场景。
 
-#### Software Architecture
-Software architecture description
+## Instructions
+    1. 小程序开发工具中引入工程
 
-#### Installation
+    2. `npm install`
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+    3. 构建 npm
 
-#### Instructions
+## Style control
+模版小程序采用基础的 JavaScript + WXSS + ESLint 进行构建，降低了使用门槛。
+开发者可以根据使用习惯自行修改`eslintrc`文件
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Minimum mp sdk version
+最低基础库版本`^2.6.5`
 
-#### Contribution
+## Add new page
+    1. 在 `pages `目录下创建对应的页面文件夹
+    2. 在 `app.json` 文件中的 ` "pages"` 数组中加上页面路径
+    3. [可选] 在 `project.config.json` 文件的 `"miniprogram-list"` 下添加页面配置
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+## Documentation
 
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+- [tdesign-miniprogram](https://tdesign.tencent.com/miniprogram/overview)
+- [mobx-miniprogram](https://github.com/mobxjs/mobx)
