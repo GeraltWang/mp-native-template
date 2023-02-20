@@ -1,4 +1,6 @@
 /* pages/login/login.wxss */
+@import 'style/mixin.scss';
+
 .full-page {
   background: var(--bg-color-page);
 }
@@ -69,6 +71,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
-  bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+  // bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  // bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+  @include safe-area-bottom
 }

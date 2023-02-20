@@ -1,0 +1,49 @@
+// 页面基准样式
+@mixin static-page-style {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+// 多行文本省略
+@mixin ellipsis-line($line: 1) {
+	display: -webkit-box;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+// 单行文本省略
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+// 宽高
+@mixin wh($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+// flex布局上下左右居中
+@mixin flex-center($direction: row) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: center;
+	justify-content: center;
+}
+
+// 底部安全区 padding
+@mixin safe-area-padding-bottom {
+  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+}
+
+// 底部安全区 bottom
+@mixin safe-area-bottom {
+  bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+}

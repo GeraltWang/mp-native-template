@@ -1,16 +1,14 @@
+@import './mixin.scss';
+
 .full-page {
   width: 100vw;
   height: 100vh;
-  padding: 0 30rpx;
-  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
-  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
-  box-sizing: border-box;
+  @include static-page-style;
+  @include safe-area-padding-bottom;
 }
 
 .full-tab-page {
-  height: 662px;
-  padding: 0 30rpx;
-  box-sizing: border-box;
+  @include static-page-style;
 }
 
 .map {
@@ -29,6 +27,7 @@
   text-overflow: ellipsis;
   word-break: break-all;
 }
+
 .text-line-1 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -37,6 +36,7 @@
   -webkit-box-orient: vertical;
   word-break: break-all;
 }
+
 .text-line2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -45,6 +45,7 @@
   -webkit-box-orient: vertical;
   word-break: break-all;
 }
+
 .text-line3 {
   overflow: hidden;
   text-overflow: ellipsis;
