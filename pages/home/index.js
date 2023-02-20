@@ -13,13 +13,17 @@ Page({
 
   },
   // 获取openid
-  getUserAuth () {
+  async getUserAuth () {
     // this.selectComponent('#my-t-message').showIconMsg('error', '这是一条错误提示通知')
-    getWxOpenId(app.globalData)
+    await getWxOpenId(app.globalData)
   },
   async testMethod () {
     const res = await getMemberInfo()
     console.log(res)
+  },
+  async initPage () {
+    await this.getUserAuth()
+    await this.testMethod()
   },
   goCharts () {
     wx.navigateTo({
@@ -30,7 +34,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad (options) {
-    this.getUserAuth()
+    this.initPage()
+    // this.getUserAuth()
     // this.testMethod()
   },
 
@@ -38,7 +43,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady () {
-
+    this.updateOpenid('hahaha')
   },
 
   /**
