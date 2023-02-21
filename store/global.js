@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-20 09:41:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 15:15:16
+ * @LastEditTime: 2023-02-21 10:07:26
  * @FilePath: /mp-native-template/store/global.js
  * @Description:
  */
@@ -15,8 +15,8 @@ const globalEnum = {
 }
 
 export const global = observable({
-  location: null,
-  sysInfo: null,
+  location: storage.local.get(globalEnum['location']),
+  sysInfo: storage.local.get(globalEnum['sysInfo']),
   updateLocation: action(function (data = {}) {
     this.location = data
     storage.local.set(globalEnum['location'], data)

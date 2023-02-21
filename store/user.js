@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-13 13:36:20
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 17:59:03
+ * @LastEditTime: 2023-02-21 10:04:51
  * @FilePath: /mp-native-template/store/user.js
  * @Description:
  */
@@ -28,8 +28,8 @@ function syncWithGlobalData (key, value) {
 
 export const user = observable({
   isLogin: false,
-  userInfo: null,
-  openid: null,
+  userInfo: storage.local.get(userEnum['userInfo']),
+  openid: storage.local.get(userEnum['openid']),
   updateUserInfo: action(function (data = {}, sync = false) {
     this.userInfo = data
     sync && syncWithGlobalData('userInfo', data)
