@@ -1,0 +1,9 @@
+<!--pages/user-center/components/statistic/index.wxml-->
+<view class="statistic">
+  <view class="statistic-label">
+    {{ label }}
+  </view>
+  <view class="statistic-value">
+    {{ formatedValue }}
+  </view>
+</view>

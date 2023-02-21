@@ -1,7 +1,21 @@
 /* pages/usercenter/index.wxss */
+page {
+  background: var(--bg-color-page);
+}
 .nav-title {
-  padding-left: 14rpx;
+  padding-left: 30rpx;
   font-weight: 600;
   font-size: 36rpx;
   letter-spacing: 2rpx;
+}
+
+.cell-view {
+  margin-top: -24rpx;
+  .cell-box:nth-child(1) {
+    background: #ffffff;
+    padding-top: 20rpx;
+  }
+  .cell-box + .cell-box {
+    margin-top: 20rpx;
+  }
 }

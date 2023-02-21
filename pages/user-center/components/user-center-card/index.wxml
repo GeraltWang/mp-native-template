@@ -1,0 +1,16 @@
+<!--pages/user-center/components/user-center-card/index.wxml-->
+<view class="user-center-card">
+  <block>
+    <view class="user-center-card-content">
+      <t-avatar class="user-center-card-content-avatar" mode="aspectFill" image="{{ defaultAvatarUrl }}"></t-avatar>
+      <view class="user-center-card-content-info">
+        <view class="content-info-name">
+          GeraldWang
+        </view>
+        <view class="content-info-state">
+          12345678901
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

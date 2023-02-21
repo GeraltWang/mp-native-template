@@ -1,0 +1,31 @@
+/* pages/user-center/components/user-center-card/index.wxss */
+.user-center-card {
+  height: 480rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: url(https://cdn-we-retail.ym.tencent.com/miniapp/template/user-center-bg-v1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  .user-center-card-content {
+    display: flex;
+    align-items: center;
+    .user-center-card-content-info {
+      margin-left: 24rpx;
+      .content-info-name {
+        font-size: 36rpx;
+        font-weight: bold;
+        color: var(--text-color-primary);
+      }
+      .content-info-state {
+        font-size: 24rpx;
+        color: var(--text-color-secondary);
+      }
+    }
+  }
+}

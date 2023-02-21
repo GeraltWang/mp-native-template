@@ -1,0 +1,17 @@
+<!--pages/user-center/components/user-center-wallet/index.wxml-->
+<view class="user-center-wallet">
+  <view class="wallet-card">
+    <view class="wallet-card-top">
+      <view>
+        <statistic label="余额(元)" value="{{ value }}"></statistic>
+      </view>
+      <view>
+        <t-button theme="primary" variant="outline" size="small">充值</t-button>
+      </view>
+    </view>
+    <view class="wallet-card-bottom">
+      <statistic class="card-bottom-item" label="优惠券(张)" value="{{ value }}"></statistic>
+      <statistic class="card-bottom-item" label="可开发票(元)" value="{{ value }}"></statistic>
+    </view>
+  </view>
+</view>

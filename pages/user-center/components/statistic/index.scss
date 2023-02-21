@@ -1,0 +1,17 @@
+/* pages/user-center/components/statistic/index.wxss */
+.statistic {
+  --statistic-label-color: #999;
+  --statistic-value-color: var(--text-color-primary);
+  .statistic-label {
+    color: var(--statistic-label-color);
+    margin-bottom: 20rpx;
+    letter-spacing: 1.25rpx;
+  }
+  .statistic-value {
+    font-size: var(--text-size-xl);
+    font-weight: bold;
+    color: var(--statistic-value-color);
+    font-variant: small-caps;
+    text-transform: capitalize;
+  }
+}

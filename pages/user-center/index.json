@@ -1,6 +1,10 @@
 {
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "user-center-card": "./components/user-center-card/index",
+    "user-center-wallet": "./components/user-center-wallet/index"
   },
   "navigationStyle": "custom"
 }

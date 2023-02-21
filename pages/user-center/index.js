@@ -1,18 +1,69 @@
 // pages/usercenter/index.js
+const menuData = [
+  [
+    {
+      title: '收货地址',
+      tit: '',
+      url: '',
+      type: 'address'
+    },
+    {
+      title: '优惠券',
+      tit: '',
+      url: '',
+      type: 'coupon'
+    },
+    {
+      title: '积分',
+      tit: '',
+      url: '',
+      type: 'point'
+    }
+  ],
+  [
+    {
+      title: '帮助中心',
+      tit: '',
+      url: '',
+      type: 'help-center'
+    },
+    {
+      title: '客服热线',
+      tit: '',
+      url: '',
+      type: 'service',
+      icon: 'service'
+    }
+  ]
+]
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    menuData,
+    value: 121
   },
-
+  change () {
+    this.setData({
+      value: 200
+    })
+  },
+  getVersionInfo () {
+    const versionInfo = wx.getAccountInfoSync()
+    const { version, envVersion = __wxConfig } = versionInfo.miniProgram
+    console.log(envVersion, __wxConfig)
+    this.setData({
+      versionNo: envVersion === 'release' ? version : envVersion
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad (options) {
-
+    this.getVersionInfo()
   },
 
   /**

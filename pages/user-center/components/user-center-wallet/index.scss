@@ -1,0 +1,32 @@
+/* pages/user-center/components/user-center-wallet/index.wxss */
+.user-center-wallet {
+  margin-top: 340rpx;
+  position: relative;
+  padding: 0 30rpx;
+  z-index: 10;
+  .wallet-card {
+    border-radius: 24rpx;
+    background: #fff;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16rpx;
+    overflow: hidden;
+    .wallet-card-top {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1rpx solid #e7e7e7;
+      padding: 30rpx;
+    }
+    .wallet-card-bottom {
+      display: flex;
+      padding: 30rpx;
+      .card-bottom-item {
+        flex: 1;
+        & + .card-bottom-item {
+          border-left: 1rpx solid #e7e7e7;
+        }
+        &:not(:first-child) {
+          padding-left: 30rpx;
+        }
+      }
+    }
+  }
+}

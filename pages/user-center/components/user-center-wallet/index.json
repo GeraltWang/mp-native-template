@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "statistic": "../statistic/index",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}
