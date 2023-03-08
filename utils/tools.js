@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import sysConfig from '../config/index'
 
 export const formatTime = (date, template) => dayjs(date).format(template)
 
@@ -120,4 +121,14 @@ const innerPhoneReg =
 export const phoneRegCheck = (phone) => {
   const phoneRegExp = new RegExp(innerPhoneReg)
   return phoneRegExp.test(phone)
+}
+
+/**
+ * @description: 阿里云oss图片url自动补全 并转webp格式
+ * @param {string} url
+ * @return {*}
+ */
+export const wrapperUrl = (url = '') => {
+  const checkUrl = url.startsWith('/') ? url : `/${url}`
+  return `${sysConfig.ossBaseUrl}${checkUrl}?x-oss-process=image/format,webp`
 }

@@ -2,17 +2,17 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 16:37:58
- * @FilePath: /mp-native-template/api/index.js
+ * @LastEditTime: 2023-03-08 17:55:13
+ * @FilePath: /mp-native-template/api/sz-coin-base/index.js
  * @Description:
  */
-import sysConfig from '../config/index'
-import storage from '../utils/wx/storage'
-import { showLoading, hideLoading } from '../utils/wx/interaction'
-const app = getApp()
+import sysConfig from '../../config/index'
+import { showLoading, hideLoading } from '../../utils/wx/interaction'
+import { user } from '../../store/index'
 
-/** request
-   * @param {object} data 传入的配置项
+/**
+   * @description: request
+   * @param {otbject} data 传入的配置项
    * @param {string} data.url 接口地址
    * @param {string} data.method 请求方式
    * @param {object} data.data 请求参数
@@ -20,32 +20,31 @@ const app = getApp()
    */
 export const request = ({ url, method, data = {}, options = {} }) => {
   return new Promise((resolve, reject) => {
-    options.needLoading && showLoading({
+    const { needLoading = false, header = {} } = options
+    needLoading && showLoading({
       title: 'Loading...'
     })
-    if (!options.header) {
-      options.header = {}
-    }
-    options.header.token = app.globalData.token || ''
-    options.header.identity = 3
+    header[sysConfig.tokenName] = user.token || ''
     wx.request({
       url: `${sysConfig.apiBaseUrl}${url}`,
       method: method || 'POST',
       data,
-      header: Object.assign(sysConfig.header, options.header),
+      header: Object.assign(sysConfig.header, header),
       success: response => {
+        if (response.statusCode !== 200) {
+          reject(response)
+        }
         const { data = {} } = response || {}
         if (Object.keys(data).length === 0) {
           reject(new Error('非法的返回值'))
         }
-        if (data.code === 401 || data.code === 403) {
-          storage.local.remove('TOKEN')
-          storage.local.remove('USER_INFO')
+        if (data.code === 10001 || data.code === 10003) {
+          user.clearUserStore()
           wx.reLaunch({
             url: '/pages/login/index'
           })
           reject(data)
-        } else if (data.code === 500) {
+        } else if (data.code === 10000) {
           reject(data)
         } else {
           resolve(data)
@@ -55,7 +54,7 @@ export const request = ({ url, method, data = {}, options = {} }) => {
         reject(err)
       },
       complete: () => {
-        options.needLoading && hideLoading()
+        needLoading && hideLoading()
       }
     })
   })

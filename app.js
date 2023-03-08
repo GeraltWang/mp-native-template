@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 15:20:08
+ * @LastEditTime: 2023-03-08 16:53:27
  * @FilePath: /mp-native-template/app.js
  * @Description:
  */
@@ -19,7 +19,6 @@ promisifyAll(wx, wx.p)
 
 App({
   globalData: {
-    isLogin: false,
     mpName: sysConfig.mpName
   },
   onThemeChange () {

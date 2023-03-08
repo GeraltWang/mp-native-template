@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-20 09:41:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-21 10:07:26
+ * @LastEditTime: 2023-03-08 16:42:16
  * @FilePath: /mp-native-template/store/global.js
  * @Description:
  */
@@ -15,8 +15,17 @@ const globalEnum = {
 }
 
 export const global = observable({
-  location: storage.local.get(globalEnum['location']),
-  sysInfo: storage.local.get(globalEnum['sysInfo']),
+  location: storage.local.get(globalEnum['location']) || {},
+  sysInfo: storage.local.get(globalEnum['sysInfo']) || {},
+  get latitude () {
+    return this.location.latitude || null
+  },
+  get longitude () {
+    return this.location.longitude || null
+  },
+  get navHeight () {
+    return this.sysInfo.navHeight || 91
+  },
   updateLocation: action(function (data = {}) {
     this.location = data
     storage.local.set(globalEnum['location'], data)

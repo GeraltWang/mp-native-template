@@ -2,13 +2,13 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-20 16:41:27
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 18:01:06
+ * @LastEditTime: 2023-03-08 17:56:23
  * @FilePath: /mp-native-template/pages/home/index.js
  * @Description:
  */
 // pages/home/home.js
 import { userBehavior } from '../../behaviors/store/user'
-import { getMemberInfo } from '../../api/model/test'
+import { getMemberInfo } from '../../api/sz-coin-base/model/test'
 import getWxOpenId from '../../utils/wx/getOpenId'
 const app = getApp()
 
@@ -30,7 +30,7 @@ Page({
     console.log(res)
   },
   async initPage () {
-    await this.getUserAuth()
+    // await this.getUserAuth()
     await this.testMethod()
   },
   goCharts () {

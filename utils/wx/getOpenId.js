@@ -2,11 +2,11 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 18:00:01
+ * @LastEditTime: 2023-03-08 17:57:06
  * @FilePath: /mp-native-template/utils/wx/getOpenId.js
  * @Description:
  */
-import { getOpenId } from '../../api/model/test'
+import { getOpenId } from '../../api/sz-coin-base/model/test'
 import { user } from '../../store/index'
 
 let retryCount = 0

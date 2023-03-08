@@ -1,8 +1,10 @@
 // pages/login/login.js
 import { showToast } from '../../utils/wx/interaction'
 import storage from '../../utils/wx/storage'
+import { userBehavior } from '../../behaviors/store/user'
 
 Page({
+  behaviors: [userBehavior],
   /**
    * 页面的初始数据
    */
