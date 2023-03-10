@@ -2,9 +2,10 @@
 import { showToast } from '../../utils/wx/interaction'
 import storage from '../../utils/wx/storage'
 import { userBehavior } from '../../behaviors/store/user'
+const computedBehavior = require('miniprogram-computed').behavior
 
 Page({
-  behaviors: [userBehavior],
+  behaviors: [userBehavior, computedBehavior],
   /**
    * 页面的初始数据
    */
@@ -31,6 +32,11 @@ Page({
       url: `/pages/web-view/index?url=${encodeURIComponent(
         'https://baidu.com'
       )}`
+    }
+  },
+  computed: {
+    testComputed (data) {
+      return data.isAgree
     }
   },
   // 获取手机号 - 登录
