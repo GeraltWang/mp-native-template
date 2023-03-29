@@ -42,8 +42,20 @@
   padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
 }
 
+// 底部安全区 padding + 10rpx
+@mixin safe-area-padding-bottom-calc($add: 10rpx){
+  padding-bottom: calc(constant(safe-area-inset-bottom) + #{$add}); /*兼容 IOS<11.2*/
+  padding-bottom: calc(env(safe-area-inset-bottom) + #{$add}); /*兼容 IOS>11.2*/
+}
+
 // 底部安全区 bottom
 @mixin safe-area-bottom {
   bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
   bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+}
+
+// 底部安全区 bottom + 10rpx
+@mixin safe-area-bottom-calc($add: 10rpx){
+  bottom: calc(constant(safe-area-inset-bottom) + #{$add}); /*兼容 IOS<11.2*/
+  bottom: calc(env(safe-area-inset-bottom) + #{$add}); /*兼容 IOS>11.2*/
 }

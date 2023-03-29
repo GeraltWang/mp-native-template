@@ -1,5 +1,9 @@
 @import './mixin.scss';
 
+.static-page {
+  @include static-page-style;
+}
+
 .full-page {
   width: 100vw;
   height: 100vh;
