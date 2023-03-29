@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-02-20 16:34:05
+ * @LastEditTime: 2023-03-29 13:19:24
  * @FilePath: /mp-native-template/README.md
  * @Description: 
 -->
@@ -18,11 +18,11 @@ Mp-Native-Template 基于微信小程序原生框架进行搭建，集成了[TDe
     3. 构建 npm
 
 ## 代码风格控制
-模版小程序采用基础的 JavaScript + WXSS + ESLint 进行构建，降低了使用门槛。
+小程序采用 WXML + JavaScript + SCSS 进行开发，采用 ESLint 进行代码风格控制。
 开发者可以根据使用习惯自行修改`eslintrc`文件
 
 ## 基础库版本
-最低基础库版本`^2.6.5`
+最低基础库版本`^2.21.1`
 
 ## 添加新页面
     1. 在 `pages `目录下创建对应的页面文件夹
