@@ -1,0 +1,18 @@
+<!--components/CaptchaDialog/index.wxml-->
+<t-dialog visible="{{visible}}" title="身份验证" confirm-btn="确定" cancel-btn="取消" bind:confirm="onConfirm" bind:cancel="closeDialog">
+  <view class="dialog-content" slot="content">
+    <view class="conten-text">
+      为保障您的资金安全，提现需进行验证
+    </view>
+    <view class="contnet-tips">
+      验证码将会发送至手机号：{{ userStore.userMobileSecret }}
+    </view>
+    <t-input borderless class="dialog-input" clearable placeholder="输入验证码" placeholder-class="placeholder" value="{{ captcha }}" cursor-spacing="{{ inputCursorSpacing }}" type="number" bindchange="onCaptchaInput" bind:clear="onClearCaptcha">
+      <view slot="suffix" class="captcha-input-suffix">
+        <view class="suffix--line"></view>
+        <view wx:if="{{!isCaptchaSend}}" class="verify" aria-role="button" bind:tap="sendCaptcha">发送验证码</view>
+        <view wx:else class="verify" aria-role="button" bind:tap="sendCaptcha">{{countDown}}s后重新发送</view>
+      </view>
+    </t-input>
+  </view>
+</t-dialog>

@@ -1,0 +1,41 @@
+/* components/CaptchaDialog/index.wxss */
+.dialog-content {
+  margin-top: 32rpx;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.placeholder {
+  color: rgba(0, 0, 0, 0.26);
+  line-height: 96rpx;
+  height: 96rpx !important;
+  display: flex;
+  align-items: center;
+}
+
+.dialog-input {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  margin-top: 32rpx;
+  border-radius: 8rpx;
+  background-color: #f3f3f3;
+  box-sizing: border-box;
+}
+
+.placeholder {
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 96rpx;
+}
+
+.captcha-input-suffix {
+  display: flex;
+  align-items: center;
+  color: var(--text-color-primary);
+  .suffix--line {
+    width: 1rpx;
+    height: 48rpx;
+    background-color: #f6f6f6;
+    margin-right: 32rpx;
+  }
+}
