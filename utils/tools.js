@@ -108,19 +108,13 @@ export const phoneEncryption = (phone) => {
   return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
 }
 
-// 内置手机号正则字符串
-const innerPhoneReg =
-  '^1(?:3\\d|4[4-9]|5[0-35-9]|6[67]|7[0-8]|8\\d|9\\d)\\d{8}$'
-
 /**
- * 手机号正则校验
- * @param phone 手机号
- * @param phoneReg 正则字符串
- * @returns true - 校验通过 false - 校验失败
+ * 银行卡号*加密函数
+ * @param {string} bankNo 银行卡号
+ * @returns
  */
-export const phoneRegCheck = (phone) => {
-  const phoneRegExp = new RegExp(innerPhoneReg)
-  return phoneRegExp.test(phone)
+export const bankEncryption = (bankNo) => {
+  return bankNo.replace(/(\d{5})\d{6}(\d{5})/, '$1******$2')
 }
 
 /**
@@ -131,4 +125,35 @@ export const phoneRegCheck = (phone) => {
 export const wrapperUrl = (url = '') => {
   const checkUrl = url.startsWith('/') ? url : `/${url}`
   return `${sysConfig.ossBaseUrl}${checkUrl}?x-oss-process=image/format,webp`
+}
+
+/**
+ * @description: 小程序sdk版本比较
+ * @param {string} currentVersion 当前sdk版本
+ * @param {string} targetVersion 目标sdk版本
+ * @return {number} 0相同  1新版本 -1老版本
+ */
+export const compareSdkVersion = (currentVersion, targetVersion) => {
+  currentVersion = currentVersion.split('.')
+  targetVersion = targetVersion.split('.')
+  const len = Math.max(currentVersion.length, targetVersion.length)
+
+  while (currentVersion.length < len) {
+    currentVersion.push('0')
+  }
+  while (targetVersion.length < len) {
+    targetVersion.push('0')
+  }
+
+  for (let i = 0; i < len; i++) {
+    const num1 = parseInt(currentVersion[i])
+    const num2 = parseInt(targetVersion[i])
+
+    if (num1 > num2) {
+      return 1
+    } else if (num1 < num2) {
+      return -1
+    }
+  }
+  return 0
 }
