@@ -4,7 +4,7 @@
     "miniprogram-computed": "^4.3.8",
     "mobx-miniprogram": "^4.13.2",
     "mobx-miniprogram-bindings": "^2.1.5",
-    "tdesign-miniprogram": "^1.0.4"
+    "tdesign-miniprogram": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
