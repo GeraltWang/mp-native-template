@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-13 14:08:40
+ * @LastEditTime: 2023-04-13 14:33:47
  * @FilePath: /mp-native-template/utils/wx/getPermission.js
  * @Description:
  */
@@ -14,6 +14,7 @@
 
 const getPermission = ({ code, name }) => {
   return wx.p.getSetting().then(res => {
+    // 用户已经拒绝过授权
     if (res.authSetting[code] === false) {
       return wx.p.showModal({
         title: `获取${name}失败`,
@@ -40,6 +41,7 @@ const getPermission = ({ code, name }) => {
       }).catch((error) => {
         return Promise.reject(error)
       })
+    // 用户未拒绝过授权
     } else if (res.authSetting[code] === undefined) {
       return wx.p.authorize({
         scope: code
@@ -71,6 +73,7 @@ const getPermission = ({ code, name }) => {
           return Promise.reject(error)
         })
       })
+    // 用户已经授权
     } else {
       return Promise.resolve()
     }

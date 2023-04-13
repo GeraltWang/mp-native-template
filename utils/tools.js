@@ -157,3 +157,7 @@ export const compareSdkVersion = (currentVersion, targetVersion) => {
   }
   return 0
 }
+
+export const promiseCatch = (promise) => {
+  return promise.then((data) => [null, data]).catch((err) => [err])
+}

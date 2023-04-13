@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-03-29 10:23:06
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-13 11:09:33
+ * @LastEditTime: 2023-04-13 16:16:49
  * @FilePath: /mp-native-template/utils/verification.js
  * @Description:
  */
@@ -67,4 +67,17 @@ export const bankCardReg = /^([1-9]{1})(\d{14}|\d{18})$/
  */
 export const bankCardRegCheck = (bankCard) => {
   return bankCardReg.test(bankCard)
+}
+
+// 内置年龄正则字符串
+export const ageReg = /^(?:[1-9][0-9]?|1[01][0-9]|120)$/
+
+/**
+ * 年龄正则校验
+ * @param age 年龄
+ * @returns true - 校验通过 false - 校验失败
+ * @description 1-120
+ */
+export const ageRegCheck = (age) => {
+  return ageReg.test(age)
 }

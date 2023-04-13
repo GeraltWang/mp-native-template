@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-03-29 11:43:27
+ * @LastEditTime: 2023-04-13 16:43:48
  * @FilePath: /mp-native-template/api/sz-coin-base/index.js
  * @Description:
  */
@@ -96,9 +96,6 @@ export const uploadFile = ({ url, filePath, name, options = {} }) => {
         }
         const { data = {} } = response || {}
         const dataFromJson = JSON.parse(data)
-        if (Object.keys(dataFromJson).length === 0) {
-          reject(new Error('非法的返回值'))
-        }
         resolve(dataFromJson)
       })
       .catch((err) => {
