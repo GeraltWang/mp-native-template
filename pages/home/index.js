@@ -1,8 +1,8 @@
 /*
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-20 16:41:27
- * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-03-08 17:56:23
+ * @LastEditors: GeraltWang WGERALT@OUTLOOK.COM
+ * @LastEditTime: 2023-03-31 23:59:41
  * @FilePath: /mp-native-template/pages/home/index.js
  * @Description:
  */
@@ -31,7 +31,7 @@ Page({
   },
   async initPage () {
     // await this.getUserAuth()
-    await this.testMethod()
+    // await this.testMethod()
   },
   goCharts () {
     wx.navigateTo({
