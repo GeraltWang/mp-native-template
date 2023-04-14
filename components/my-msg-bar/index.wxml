@@ -1,6 +1,9 @@
 <!--components/my-msg-bar/index.wxml-->
 <view class="my-msg-bar my-class">
-  <swiper class="my-msg-bar-swiper my-class-msg" autoplay circular="{{ circular }}" vertical>
+  <view class="my-msg-bar-notice" wx:if="{{ msgTitle }}">
+    {{ msgTitle }}
+  </view>
+  <swiper class="my-msg-bar-swiper my-class-msg" autoplay circular="{{ circular }}" vertical interval="{{ interval }}">
     <swiper-item class="my-msg-bar-swiper-item" wx:for="{{ filterMsgData }}" wx:key="index">
       <view class="item-text">
         {{ item }}

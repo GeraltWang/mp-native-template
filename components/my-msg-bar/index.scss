@@ -11,6 +11,10 @@
   backdrop-filter: blur(40rpx);
   border-radius: 60rpx;
   box-shadow: 0 40rpx 40rpx 0 rgba(90, 90, 90, 0.1);
+  .my-msg-bar-notice {
+    font-size: 28rpx;
+    margin-right: 20rpx;
+  }
   .my-msg-bar-swiper {
     flex: 1;
     height: 50rpx;

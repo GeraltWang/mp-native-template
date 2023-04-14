@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-04-14 13:44:05
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-14 17:22:14
+ * @LastEditTime: 2023-04-14 17:58:43
  * @FilePath: /mp-native-template/components/my-msg-bar/index.js
  * @Description:
  *
@@ -18,6 +18,14 @@ Component({
     msgData: {
       type: Array,
       value: []
+    },
+    msgTitle: {
+      type: String,
+      value: ''
+    },
+    interval: {
+      type: Number,
+      value: 2800
     },
     circular: {
       type: Boolean,
