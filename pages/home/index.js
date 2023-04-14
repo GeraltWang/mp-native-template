@@ -2,8 +2,8 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-20 16:41:27
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-13 13:27:16
- * @FilePath: /mp-native-template/pages/home/index.js
+ * @LastEditTime: 2023-04-14 13:36:13
+ * @FilePath: /undefined/Users/haohuo/Desktop/myCode/mp-native-template/pages/home/index.js
  * @Description:
  */
 // pages/home/home.js
