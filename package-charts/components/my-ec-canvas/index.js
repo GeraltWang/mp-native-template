@@ -1,3 +1,11 @@
+/*
+ * @Author: 王昶 wgeralt@outlook.com
+ * @Date: 2023-02-12 22:08:44
+ * @LastEditors: 王昶 wgeralt@outlook.com
+ * @LastEditTime: 2023-04-14 13:48:34
+ * @FilePath: /mp-native-template/package-charts/components/my-ec-canvas/index.js
+ * @Description:
+ */
 // package-charts/components/my-ec-canvas/index.js
 import * as echarts from '../../libs/echarts.min'
 
@@ -52,7 +60,6 @@ Component({
     },
     getOption () {
       const option = this.data.options
-      console.log(option)
       return option
     }
   }

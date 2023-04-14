@@ -1,4 +1,5 @@
 <!--package-charts/pages/chart-demo/index.wxml-->
 <view class="container">
   <my-ec-canvas chart-line-id="mychart-dom-bar" canvas-id="mychart-bar" options="{{options}}"></my-ec-canvas>
+  <my-ec-canvas chart-line-id="mychart-dom-bar" canvas-id="mychart-bar" options="{{barOptions}}"></my-ec-canvas>
 </view>
