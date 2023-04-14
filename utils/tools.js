@@ -158,6 +158,17 @@ export const compareSdkVersion = (currentVersion, targetVersion) => {
   return 0
 }
 
+/**
+ * @description: promise catch 处理promise异常，避免频繁使用try catch
+ * @param {Promise} promise
+ * @return {*}
+ * @example
+ * const [err, data] = await promiseCatch(promise)
+ * if (err) {
+ *  // do something
+ * }
+ * // do something
+ */
 export const promiseCatch = (promise) => {
   return promise.then((data) => [null, data]).catch((err) => [err])
 }

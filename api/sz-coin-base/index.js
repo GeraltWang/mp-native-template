@@ -2,12 +2,14 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-13 16:43:48
+ * @LastEditTime: 2023-04-14 16:04:05
  * @FilePath: /mp-native-template/api/sz-coin-base/index.js
  * @Description:
  */
 import sysConfig from '../../config/index'
 import { showLoading, hideLoading } from '../../utils/wx/interaction'
+import { promiseCatch } from '../../utils/tools'
+import { CODE_ENUM, HTTP_STATUS_ENUM } from './enum/index'
 import { user } from '../../store/index'
 
 /**
@@ -31,20 +33,20 @@ export const request = ({ url, method, data = {}, options = {} }) => {
       data,
       header: Object.assign({}, sysConfig.szCoinBase.header, header),
       success: response => {
-        if (response.statusCode !== 200) {
+        if (response.statusCode !== HTTP_STATUS_ENUM.SUCCESS) {
           reject(response)
         }
         const { data = {} } = response || {}
         if (Object.keys(data).length === 0) {
           reject(new Error('非法的返回值'))
         }
-        if (data.code === 10001 || data.code === 10003) {
+        if (data.code === CODE_ENUM.UNAUTHORIZED || data.code === CODE_ENUM.FORBIDDEN) {
           user.clearUserStore()
           wx.reLaunch({
             url: '/pages/login/index'
           })
           reject(data)
-        } else if (data.code === 10000) {
+        } else if (data.code === CODE_ENUM.ERROR) {
           reject(data)
         } else {
           resolve(data)
@@ -61,11 +63,11 @@ export const request = ({ url, method, data = {}, options = {} }) => {
 }
 
 export const http = {
-  get: ({ url, data, options }) => request({ url, method: 'GET', data, options }),
-  post: ({ url, data, options }) => request({ url, method: 'POST', data, options }),
-  delete: ({ url, data, options }) => request({ url, method: 'DELETE', data, options }),
-  put: ({ url, data, options }) => request({ url, method: 'PUT', data, options }),
-  patch: ({ url, data, options }) => request({ url, method: 'PATCH', data, options })
+  get: ({ url, data, options }) => promiseCatch(request({ url, method: 'GET', data, options })),
+  post: ({ url, data, options }) => promiseCatch(request({ url, method: 'POST', data, options })),
+  delete: ({ url, data, options }) => promiseCatch(request({ url, method: 'DELETE', data, options })),
+  put: ({ url, data, options }) => promiseCatch(request({ url, method: 'PUT', data, options })),
+  patch: ({ url, data, options }) => promiseCatch(request({ url, method: 'PATCH', data, options }))
 }
 
 /**
@@ -78,9 +80,9 @@ export const http = {
  */
 export const uploadFile = ({ url, filePath, name, options = {} }) => {
   return new Promise((resolve, reject) => {
-    const { needLoading = false, header = {} } = options
+    const { needLoading = false, loadingText = sysConfig.loadingText, header = {} } = options
     needLoading && showLoading({
-      title: '上传中...'
+      title: loadingText
     })
     header[sysConfig.szCoinBase.tokenName] = `${sysConfig.szCoinBase.tokenPrefix}${user.token}` || ''
     wx.p
@@ -91,7 +93,7 @@ export const uploadFile = ({ url, filePath, name, options = {} }) => {
         header: Object.assign({}, sysConfig.szCoinBase.header, header)
       })
       .then((response) => {
-        if (response.statusCode !== 200) {
+        if (response.statusCode !== HTTP_STATUS_ENUM.SUCCESS) {
           reject(response)
         }
         const { data = {} } = response || {}
