@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "my-t-message": "../../components/Message/index"
+    "my-t-message": "../../components/Message/index",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }

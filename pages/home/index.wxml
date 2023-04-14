@@ -1,4 +1,5 @@
 <!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class="static-page">
+  <t-cell title="echarts示例" url="/package-charts/pages/chart-demo/index" arrow></t-cell>
+</view>
 <my-t-message id="my-t-message"></my-t-message>
-<button bind:tap="goCharts">charts</button>
