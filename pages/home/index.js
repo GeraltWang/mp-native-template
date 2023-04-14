@@ -2,8 +2,8 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-20 16:41:27
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-14 13:36:13
- * @FilePath: /undefined/Users/haohuo/Desktop/myCode/mp-native-template/pages/home/index.js
+ * @LastEditTime: 2023-04-14 16:36:12
+ * @FilePath: /mp-native-template/pages/home/index.js
  * @Description:
  */
 // pages/home/home.js
@@ -18,7 +18,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    msgData: [
+      {
+        name: 'International Band Music Concert'
+      },
+      {
+        name: 'International kids safe parents night out International kids safe parents night out'
+      },
+      {
+        name: 'Lorem ipsum dolor sit amet, consectetur'
+      }
+    ],
+    msgProps: {
+      label: 'name'
+    }
   },
   // 获取openid
   async getUserAuth () {
@@ -26,8 +39,8 @@ Page({
     await getWxOpenId(app.globalData)
   },
   async testMethod () {
-    const res = await getMemberInfo()
-    console.log(res)
+    const [error, data] = await getMemberInfo()
+    console.log(error, data)
   },
   async initPage () {
     // await this.getUserAuth()

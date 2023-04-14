@@ -1,4 +1,14 @@
 /* pages/home/home.wxss */
+page {
+  background: var(--bg-color-page);
+}
+
+.static-page {
+  padding-top: 20rpx;
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .example-bg {
   background: #6D6D6D;
   height: 400rpx;

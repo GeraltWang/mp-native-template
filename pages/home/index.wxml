@@ -1,27 +1,9 @@
 <!--pages/home/home.wxml-->
 <view class="static-page">
-  <t-cell title="echarts示例" url="/package-charts/pages/chart-demo/index" arrow></t-cell>
+  <t-cell-group theme="card">
+    <t-cell title="echarts示例" url="/package-charts/pages/chart-demo/index" arrow></t-cell>
+    <t-cell title="组件示例" url="/package-charts/pages/chart-demo/index" arrow></t-cell>
+  </t-cell-group>
+  <my-msg-bar msg-data="{{ msgData }}" msg-props="{{ msgProps }}"></my-msg-bar>
 </view>
 <my-t-message id="my-t-message"></my-t-message>
-<view class="example-bg">
-  
-</view>
-<view class="my-msg-bar">
-  <swiper class="my-msg-bar-swiper" autoplay circular vertical>
-    <swiper-item class="my-msg-bar-swiper-item">
-      <view class="item-text">
-        International Band Music Concert
-      </view>
-    </swiper-item>
-    <swiper-item class="my-msg-bar-swiper-item">
-      <view class="item-text">
-        International kids safe parents night out International kids safe parents night out
-      </view>
-    </swiper-item>
-    <swiper-item class="my-msg-bar-swiper-item">
-      <view class="item-text">
-        Lorem ipsum dolor sit amet, consectetur 
-      </view>
-    </swiper-item>
-  </swiper>
-</view>
