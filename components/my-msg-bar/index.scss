@@ -1,0 +1,37 @@
+/* components/my-msg-bar/index.wxss */
+.my-msg-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+  margin: 0 32rpx;
+  background: #fefeff;
+  backdrop-filter: blur(40rpx);
+  border-radius: 60rpx;
+  box-shadow: 0 40rpx 40rpx 0 rgba(90, 90, 90, 0.1);
+  .my-msg-bar-swiper {
+    flex: 1;
+    height: 50rpx;
+    .my-msg-bar-swiper-item {
+      display: flex;
+      align-items: center;
+      font-size: 28rpx;
+      .item-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .my-msg-bar-dot {
+    position: absolute;
+    right: 0;
+    top: 10rpx;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+    background-color: var(--color-danger);
+  }
+}

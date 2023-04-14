@@ -1,0 +1,12 @@
+<!--components/my-msg-bar/index.wxml-->
+<view class="my-msg-bar my-class">
+  <swiper class="my-msg-bar-swiper my-class-msg" autoplay circular="{{ circular }}" vertical>
+    <swiper-item class="my-msg-bar-swiper-item" wx:for="{{ filterMsgData }}" wx:key="index">
+      <view class="item-text">
+        {{ item }}
+      </view>
+    </swiper-item>
+  </swiper>
+  <!-- 小红点 -->
+  <view class="my-msg-bar-dot my-class-dot"></view>
+</view>
