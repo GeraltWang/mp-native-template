@@ -2,15 +2,18 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-14 16:04:05
+ * @LastEditTime: 2023-04-24 13:17:39
  * @FilePath: /mp-native-template/api/sz-coin-base/index.js
  * @Description:
  */
 import sysConfig from '../../config/index'
+import logManager from '../../utils/wx/logManager'
 import { showLoading, hideLoading } from '../../utils/wx/interaction'
 import { promiseCatch } from '../../utils/tools'
 import { CODE_ENUM, HTTP_STATUS_ENUM } from './enum/index'
 import { user } from '../../store/index'
+
+let isRefreshing = false
 
 /**
    * @description: request
@@ -41,10 +44,16 @@ export const request = ({ url, method, data = {}, options = {} }) => {
           reject(new Error('非法的返回值'))
         }
         if (data.code === CODE_ENUM.UNAUTHORIZED || data.code === CODE_ENUM.FORBIDDEN) {
-          user.clearUserStore()
-          wx.reLaunch({
-            url: '/pages/login/index'
-          })
+          if (isRefreshing === false) {
+            isRefreshing = true
+            user.clearUserStore()
+            wx.reLaunch({
+              url: '/pages/login/index',
+              success: () => {
+                isRefreshing = false
+              }
+            })
+          }
           reject(data)
         } else if (data.code === CODE_ENUM.ERROR) {
           reject(data)
@@ -53,6 +62,7 @@ export const request = ({ url, method, data = {}, options = {} }) => {
         }
       },
       fail: err => {
+        logManager.error('api调用失败', err)
         reject(err)
       },
       complete: () => {
