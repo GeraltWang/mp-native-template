@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-03-29 10:23:06
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-13 16:16:49
+ * @LastEditTime: 2023-04-24 13:09:58
  * @FilePath: /mp-native-template/utils/verification.js
  * @Description:
  */
@@ -30,6 +30,18 @@ export const idReg = /^\d{6}((((((19|20)\d{2})(0[13-9]|1[012])(0[1-9]|[12]\d|30)
  */
 export const verifyId = (id) => {
   return idReg.test(id)
+}
+
+// 内置密码正则字符串
+export const passwordReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/ // 6-20位数字和字母组合
+
+/**
+ * 密码正则校验
+ * @param password 密码
+ * @returns true - 校验通过 false - 校验失败
+ */
+export const verifyPassword = (password) => {
+  return passwordReg.test(password)
 }
 
 // 内置姓名正则字符串
