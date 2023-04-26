@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-20 16:41:27
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-14 16:36:12
+ * @LastEditTime: 2023-04-26 10:53:14
  * @FilePath: /mp-native-template/pages/home/index.js
  * @Description:
  */
@@ -10,6 +10,7 @@
 import { userBehavior } from '../../behaviors/store/user'
 import { getMemberInfo } from '../../api/sz-coin-base/model/test'
 import getWxOpenId from '../../utils/wx/getOpenId'
+import sceneHandler from '../../utils/wx/sceneHandler'
 const app = getApp()
 
 Page({
@@ -70,6 +71,8 @@ Page({
    */
   onShow () {
     this.getTabBar().init()
+    const scene = sceneHandler.setScene()
+    console.log(scene.getEnterOptions())
   },
 
   /**
