@@ -2,12 +2,12 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-03-08 16:53:27
+ * @LastEditTime: 2023-05-04 17:08:19
  * @FilePath: /mp-native-template/app.js
  * @Description:
  */
 import updateManager from './utils/wx/updateManager'
-import getPermission from './utils/wx/getPermission'
+import { getPermission } from './utils/wx/getPermission'
 import getSystemInfo from './utils/wx/getSystemInfo'
 import { getLocation } from './utils/wx/location'
 import sysConfig from './config/index'
