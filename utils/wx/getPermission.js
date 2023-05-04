@@ -2,16 +2,16 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-05-04 17:07:52
+ * @LastEditTime: 2023-05-04 17:51:49
  * @FilePath: /mp-native-template/utils/wx/getPermission.js
  * @Description:
  */
+
 /** getPermission
  * @param {object} data 传入的数据包含 code name
  * @param {string} data.code 权限code
  * @param {string} data.name 权限名称(可自定义)
  */
-
 export const getPermission = async ({ code, name }) => {
   try {
     const res = await wx.p.getSetting()
