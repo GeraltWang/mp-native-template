@@ -2,7 +2,7 @@
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-14 13:48:34
+ * @LastEditTime: 2023-05-04 17:42:39
  * @FilePath: /mp-native-template/package-charts/components/my-ec-canvas/index.js
  * @Description:
  */
@@ -23,10 +23,22 @@ Component({
     }
   },
 
+  observers: {
+    options (newVal) {
+      this.setData({
+        myOptions: newVal
+      })
+      if (this.data.init) {
+        this.initChart()
+      }
+    }
+  },
+
   /**
    * 组件的初始数据
    */
   data: {
+    init: false,
     ec: {
       lazyLoad: true // 设置echarts延时加载
     }
@@ -55,6 +67,9 @@ Component({
         })
         canvas.setChart(chart)
         chart.setOption(this.getOption())
+        this.setData({
+          init: true
+        })
         return chart
       })
     },
