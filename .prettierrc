@@ -1,0 +1,17 @@
+{
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": "*.wxml",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.wxss",
+      "options": {
+        "parser": "css"
+      }
+    }
+  ]
+}
