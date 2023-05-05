@@ -1,6 +1,9 @@
 /* pages/usercenter/index.wxss */
+@import "style/mixin.scss";
+
 page {
   background: var(--bg-color-page);
+  @include safe-area-padding-bottom-calc(120rpx)
 }
 .nav-title {
   padding-left: 30rpx;
