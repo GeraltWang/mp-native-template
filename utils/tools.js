@@ -31,7 +31,6 @@ export function priceFormat (price, fill = 0) {
 
 /**
  * 获取cdn裁剪后链接
- *
  * @param {string} url 基础链接
  * @param {number} width 宽度，单位px
  * @param {number} [height] 可选，高度，不填时与width同值
@@ -172,3 +171,10 @@ export const compareSdkVersion = (currentVersion, targetVersion) => {
 export const promiseCatch = (promise) => {
   return promise.then((data) => [null, data]).catch((err) => [err])
 }
+
+/**
+ * @description: promise sleep 等待函数
+ * @param {number} t 等待时间
+ * @return {*}
+ */
+export const sleep = async (t) => new Promise((resolve) => setTimeout(resolve, t))
