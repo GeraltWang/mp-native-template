@@ -3,6 +3,7 @@
   <t-cell-group theme="card">
     <t-cell title="echarts示例" url="/package-charts/pages/chart-demo/index" arrow></t-cell>
     <t-cell title="组件示例" url="/package-charts/pages/chart-demo/index" arrow></t-cell>
+    <t-cell title="提示示例" url="/package-demo/pages/interaction-demo/index" arrow></t-cell>
   </t-cell-group>
   <my-msg-bar msg-data="{{ msgData }}" msg-props="{{ msgProps }}"></my-msg-bar>
 </view>

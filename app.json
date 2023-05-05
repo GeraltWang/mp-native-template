@@ -32,6 +32,12 @@
       "pages": [
         "pages/chart-demo/index"
       ]
+    },
+    {
+      "root": "package-demo",
+      "pages": [
+        "pages/interaction-demo/index"
+      ]
     }
   ],
   "plugins": {},

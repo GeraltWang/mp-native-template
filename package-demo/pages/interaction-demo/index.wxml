@@ -1,0 +1,7 @@
+<!--package-demo/pages/interaction-demo/index.wxml-->
+<view class="static-page">
+  <button class="btn" bind:tap="modal">modal</button>
+  <button class="btn" bind:tap="toast">toast</button>
+  <button class="btn" bind:tap="loading">loading</button>
+  <button class="btn" bind:tap="hideLoading">hide loading</button>
+</view>
