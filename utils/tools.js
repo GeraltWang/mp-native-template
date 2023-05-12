@@ -178,3 +178,47 @@ export const promiseCatch = (promise) => {
  * @return {*}
  */
 export const sleep = async (t) => new Promise((resolve) => setTimeout(resolve, t))
+
+/**
+ * @description: formatNumber 千分位
+ * @param {*} num
+ * @return {*}
+ * @example
+ * formatNumber(123456789) // 123,456,789
+ * formatNumber(123456789.123) // 123,456,789.123
+ */
+export function formatNumber (num) {
+  num = num + ''
+  if (!num.includes('.')) {
+    num += '.'
+  }
+  return num
+    .replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
+      return $1 + ','
+    })
+    .replace(/\.$/, '')
+}
+
+/**
+ * @description: formatNumberRound 四舍五入并保留两位小数
+ * @param {number} num
+ * @return {*}
+ */
+export function formatNumberRound (num) {
+  return (Math.round(num * 100) / 100).toFixed(2)
+}
+
+/**
+ * @description: handleNumber 处理数字，四舍五入并保留两位小数，最后转成千分位
+ * @param {*} num
+ * @return {*}
+ */
+export function handleNumber (num) {
+  if (num === 0) {
+    return formatNumberRound(num)
+  } else {
+    const round = formatNumberRound(num)
+    const format = formatNumber(round)
+    return format
+  }
+}
