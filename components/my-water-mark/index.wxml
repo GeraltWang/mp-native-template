@@ -1,0 +1,10 @@
+<view
+  class="my-water-mark"
+  style="--my-water-mark-color: {{ color }}; --my-water-mark-opacity: {{ opacity }}; --my-water-mark-rotate: {{ rotate }}deg;"
+>
+  <block wx:for="{{30}}" wx:key="index">
+    <view class="my-water-mark-item">
+      {{ text + '　　' + suffix }}　　　　　　{{ text + '　　' + suffix }}　　　　　{{ text + '　　' + suffix }}
+    </view>
+  </block>
+</view>

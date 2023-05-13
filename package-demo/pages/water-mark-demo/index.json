@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "水印demo",
+  "usingComponents": {
+    "my-water-mark": "/components/my-water-mark/index"
+  }
+}

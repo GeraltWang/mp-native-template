@@ -1,0 +1,16 @@
+.my-water-mark {
+  position: fixed;
+  top: -10vh;
+  left: -60vw;
+  width: 250vw;
+  height: 100vh;
+  transform: rotate(var(--my-water-mark-rotate));
+  pointer-events: none;
+}
+
+.my-water-mark-item {
+  color: var(--my-water-mark-color);
+  opacity: var(--my-water-mark-opacity);
+  margin: 30rpx;
+  padding: 20rpx;
+}
