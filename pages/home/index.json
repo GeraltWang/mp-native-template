@@ -3,7 +3,6 @@
     "my-t-message": "../../components/Message/index",
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
-    "t-icon": "tdesign-miniprogram/icon/icon",
-    "my-msg-bar": "../../components/my-msg-bar/index"
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }

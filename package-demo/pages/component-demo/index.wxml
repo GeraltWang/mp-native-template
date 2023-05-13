@@ -1,0 +1,4 @@
+<!--package-demo/pages/component-demo/index.wxml-->
+<view class="static-page">
+  <my-msg-bar msg-data="{{ msgData }}" msg-props="{{ msgProps }}"></my-msg-bar>
+</view>

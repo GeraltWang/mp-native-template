@@ -18,22 +18,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
-    msgData: [
-      {
-        name: 'International Band Music Concert'
-      },
-      {
-        name: 'International kids safe parents night out International kids safe parents night out'
-      },
-      {
-        name: 'Lorem ipsum dolor sit amet, consectetur'
-      }
-    ],
-    msgProps: {
-      label: 'name'
-    }
-  },
+  data: {},
   // 获取openid
   async getUserAuth () {
     // this.selectComponent('#my-t-message').showIconMsg('error', '这是一条错误提示通知')

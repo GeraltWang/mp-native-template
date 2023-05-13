@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "my-msg-bar": "/components/my-msg-bar/index"
+  }
+}
