@@ -38,7 +38,8 @@
       "pages": [
         "pages/interaction-demo/index",
         "pages/water-mark-demo/index",
-        "pages/component-demo/index"
+        "pages/component-demo/index",
+        "pages/signature-demo/index"
       ]
     }
   ],
