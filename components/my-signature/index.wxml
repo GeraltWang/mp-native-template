@@ -1,0 +1,7 @@
+<view class="my-signature">
+  <canvas id="my-signature" class="my-signature-canvas" type="2d" catchtouchmove="catchTouchMove" catchtouchend="catchTouchEnd" bindtouchcancel="catchTouchEnd"></canvas>
+  <view class="my-signature-btn">
+    <button bind:tap="clearCanvas">重新绘制</button>
+    <button>完成</button>
+  </view>
+</view>

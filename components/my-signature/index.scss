@@ -1,0 +1,15 @@
+.my-signature {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .my-signature-canvas {
+    width: 100%;
+    flex: 1;
+  }
+}
+
+.my-signature-btn {
+  display: flex;
+  height: 40rpx;
+}
