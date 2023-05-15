@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "签名",
   "pageOrientation": "landscape",
   "usingComponents": {
     "my-signature": "/components/my-signature/index"

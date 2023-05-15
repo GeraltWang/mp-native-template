@@ -1,7 +1,10 @@
 <view class="my-signature">
-  <canvas id="my-signature" class="my-signature-canvas" type="2d" catchtouchmove="catchTouchMove" catchtouchend="catchTouchEnd" bindtouchcancel="catchTouchEnd"></canvas>
+  <view class="my-signature-tip">
+    请在区域内签名
+  </view>
+  <canvas id="my-signature" class="my-signature-canvas" style="width: {{ windowWidth }}px; height: {{ windowHeight }}px;" type="2d" catchtouchstart="catchTouchStart" catchtouchmove="catchTouchMove" catchtouchend="catchTouchEnd" bindtouchcancel="catchTouchEnd"></canvas>
   <view class="my-signature-btn">
-    <button bind:tap="clearCanvas">重新绘制</button>
-    <button>完成</button>
+    <button class="my-signature-btn-item" bind:tap="clearCanvas">重新绘制</button>
+    <button class="my-signature-btn-item btn-primary" bind:tap="confirmCanvas">完成</button>
   </view>
 </view>
