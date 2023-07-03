@@ -14,21 +14,22 @@ const realtimeLogger = wx.getRealtimeLogManager ? wx.getRealtimeLogManager() : n
 // 版本
 const version = sysConfig.mpVersion
 
+
 export default {
-  info () {
+  info (...args: any[]) {
     if (!realtimeLogger) return
-    realtimeLogger.info(`version: ${version}`, 'info log', ...arguments)
+    realtimeLogger.info(`version: ${version}`, 'info log', ...args)
   },
-  warn () {
+  warn (...args: any[]) {
     if (!realtimeLogger) return
-    realtimeLogger.warn(`version: ${version}`, 'warn log', ...arguments)
+    realtimeLogger.warn(`version: ${version}`, 'warn log', ...args)
   },
-  error () {
+  error (...args: any[]) {
     if (!realtimeLogger) return
-    realtimeLogger.error(`version: ${version}`, 'error log', ...arguments)
+    realtimeLogger.error(`version: ${version}`, 'error log', ...args)
   },
   // 从基础库2.7.3开始支持
-  setFilterMsg (msg) {
+  setFilterMsg (msg: string) {
     if (!realtimeLogger || !realtimeLogger.setFilterMsg) return
     if (typeof msg !== 'string') return
     realtimeLogger.setFilterMsg(msg)

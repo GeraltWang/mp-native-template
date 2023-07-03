@@ -12,9 +12,12 @@ import getSystemInfo from './utils/wx/getSystemInfo'
 import { getLocation } from './utils/wx/location'
 import sysConfig from './config/index'
 import { global } from './store/index'
+// @ts-ignore
 import { promisifyAll } from 'miniprogram-api-promise'
 
+// @ts-ignore
 const wxp = wx.p = {}
+// @ts-ignore
 promisifyAll(wx, wx.p)
 
 App({
@@ -42,6 +45,7 @@ App({
   async launchApp () {
     try {
       // 获取用户设备信息
+      // @ts-ignore
       getSystemInfo().then(result => {
         global.updateSysInfo(result)
       })

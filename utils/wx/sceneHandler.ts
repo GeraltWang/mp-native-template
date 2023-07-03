@@ -14,11 +14,16 @@
  * @return {*}
  */
 class SceneHandler {
+  scene: number
+  path: string | undefined | null
+  query: any
+  shareTicket: string | undefined | null
+  referrerInfo: any
   constructor () {
-    this.scene = null
-    this.path = null
+    this.scene = 1001
+    this.path = ''
     this.query = {}
-    this.shareTicket = null
+    this.shareTicket = ''
     this.referrerInfo = {}
   }
 
@@ -83,13 +88,17 @@ class SceneHandler {
   }
 }
 
+interface SceneMap {
+  [key: number]: string
+}
+
 /**
  * @description: 场景值处理
  * @param {*} scene
  * @return {*}
  */
-function sceneFilter (scene) {
-  const sceneMap = {
+function sceneFilter (scene: number) {
+  const sceneMap: SceneMap = {
     1001: '发现栏小程序主入口，“最近使用”列表',
     1005: '顶部搜索框的搜索结果页',
     1006: '发现栏小程序主入口搜索框的搜索结果页',

@@ -16,7 +16,7 @@ export const phoneReg = /^(?:(?:\+|00)86)?1\d{10}$/
  * @param phoneReg 正则字符串
  * @returns true - 校验通过 false - 校验失败
  */
-export function verifyPhone (phone) {
+export function verifyPhone (phone: string) {
   return phoneReg.test(phone)
 }
 
@@ -28,7 +28,7 @@ export const idReg = /^\d{6}((((((19|20)\d{2})(0[13-9]|1[012])(0[1-9]|[12]\d|30)
  * @param id 身份证号
  * @returns true - 校验通过 false - 校验失败
  */
-export const verifyId = (id) => {
+export const verifyId = (id: string) => {
   return idReg.test(id)
 }
 
@@ -40,7 +40,7 @@ export const passwordReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/ // 6-2
  * @param password 密码
  * @returns true - 校验通过 false - 校验失败
  */
-export const verifyPassword = (password) => {
+export const verifyPassword = (password: string) => {
   return passwordReg.test(password)
 }
 
@@ -52,7 +52,7 @@ export const nameReg = /^(?:[\u4e00-\u9fa5·]{2,16})$/
  * @param name 姓名
  * @returns true - 校验通过 false - 校验失败
  */
-export const nameRegCheck = (name) => {
+export const nameRegCheck = (name: string) => {
   return nameReg.test(name)
 }
 
@@ -64,7 +64,7 @@ export const emailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/
  * @param email 邮箱
  * @returns true - 校验通过 false - 校验失败
  */
-export const emailRegCheck = (email) => {
+export const emailRegCheck = (email: string) => {
   return emailReg.test(email)
 }
 
@@ -77,7 +77,7 @@ export const bankCardReg = /^([1-9]{1})(\d{14}|\d{18})$/
  * @returns true - 校验通过 false - 校验失败
  * @description 16-19位
  */
-export const bankCardRegCheck = (bankCard) => {
+export const bankCardRegCheck = (bankCard: string) => {
   return bankCardReg.test(bankCard)
 }
 
@@ -90,6 +90,6 @@ export const ageReg = /^(?:[1-9][0-9]?|1[01][0-9]|120)$/
  * @returns true - 校验通过 false - 校验失败
  * @description 1-120
  */
-export const ageRegCheck = (age) => {
-  return ageReg.test(age)
+export const ageRegCheck = (age: string | number) => {
+  return ageReg.test(age as string)
 }

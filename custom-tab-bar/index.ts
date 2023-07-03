@@ -7,13 +7,15 @@
  * @Description:
  */
 import TabMenu from './data'
+import { TabBarItem } from './data'
+
 Component({
   data: {
     active: 0,
     list: TabMenu
   },
   methods: {
-    onChange (event) {
+    onChange (event: any) {
       // this.setData({ active: event.detail.value })
       const index = event.detail.value
       wx.switchTab({
@@ -26,7 +28,7 @@ Component({
       const page = getCurrentPages().pop()
       const route = page ? page.route.split('?')[0] : ''
       const active = this.data.list.findIndex(
-        (item) =>
+        (item: TabBarItem) =>
           (item.url.startsWith('/') ? item.url.substr(1) : item.url) ===
           `${route}`
       )

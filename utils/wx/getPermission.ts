@@ -12,12 +12,14 @@
  * @param {string} data.code 权限code
  * @param {string} data.name 权限名称(可自定义)
  */
-export const getPermission = async ({ code, name }) => {
+export const getPermission = async ({ code, name }: { code: string, name: string }) => {
   try {
+    // @ts-ignore
     const res = await wx.p.getSetting()
     if (res.authSetting[code] === false) {
       return showModal(code, name)
     } else if (res.authSetting[code] === undefined) {
+      // @ts-ignore
       await wx.p.authorize({ scope: code })
       return Promise.resolve()
     } else {
@@ -28,14 +30,16 @@ export const getPermission = async ({ code, name }) => {
   }
 }
 
-const showModal = async (code, name) => {
+const showModal = async (code: string, name: string) => {
   try {
+    // @ts-ignore
     const res = await wx.p.showModal({
       title: `获取${name}失败`,
       content: `获取${name}失败，请在【右上角】-小程序【设置】项中，将【${name}】开启。`,
       confirmText: '去设置'
     })
     if (res.confirm) {
+      // @ts-ignore
       const settingRes = await wx.p.openSetting()
       if (settingRes.authSetting[code] === true) {
         return Promise.resolve()

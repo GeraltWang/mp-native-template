@@ -3,7 +3,7 @@
  * @Date: 2023-02-12 22:08:44
  * @LastEditors: 王昶 wgeralt@outlook.com
  * @LastEditTime: 2023-04-24 13:17:39
- * @FilePath: /mp-native-template/api/sz-coin-base/index.js
+ * @FilePath: /mp-native-template/api/szCoinBase/index.js
  * @Description:
  */
 import sysConfig from '../../config/index'
@@ -12,6 +12,9 @@ import { showLoading, hideLoading } from '../../utils/wx/interaction'
 import { promiseCatch } from '../../utils/tools'
 import { CODE_ENUM, HTTP_STATUS_ENUM } from './enum/index'
 import { user } from '../../store/index'
+import { SpecResult, RequestConfig, Result, ResultData, PromiseCatchResult, HttpConfig, UploadFileConfig } from './interface/request'
+
+const alias = 'szCoinBase'
 
 let isRefreshing = false
 
@@ -23,23 +26,23 @@ let isRefreshing = false
    * @param {object} data.data 请求参数
    * @param {object} data.options 请求配置
    */
-export const request = ({ url, method, data = {}, options = {} }) => {
+export const request = ({ url, method, data = {}, options = {} }: RequestConfig): Promise<Result | ResultData> => {
   return new Promise((resolve, reject) => {
-    const { needLoading = false, loadingText = sysConfig.loadingText, header = {} } = options
+    const { needLoading = false, loadingText = sysConfig.baseLoadingText, header = {} } = options
     needLoading && showLoading({
       title: loadingText
     })
-    header[sysConfig.szCoinBase.tokenName] = user.token || ''
+    header[sysConfig[alias].tokenName] = `${sysConfig[alias].tokenPrefix}${user.token}` || ''
     wx.request({
-      url: `${sysConfig.szCoinBase.apiBaseUrl}${url}`,
+      url: `${sysConfig[alias].apiBaseUrl}${url}`,
       method: method || 'POST',
       data,
-      header: Object.assign({}, sysConfig.szCoinBase.header, header),
-      success: response => {
+      header: Object.assign({}, sysConfig[alias].header, header),
+      success: (response: SpecResult<ResultData>) => {
         if (response.statusCode !== HTTP_STATUS_ENUM.SUCCESS) {
           reject(response)
         }
-        const { data = {} } = response || {}
+        const { data } = response || {}
         if (Object.keys(data).length === 0) {
           reject(new Error('非法的返回值'))
         }
@@ -73,11 +76,11 @@ export const request = ({ url, method, data = {}, options = {} }) => {
 }
 
 export const http = {
-  get: ({ url, data, options }) => promiseCatch(request({ url, method: 'GET', data, options })),
-  post: ({ url, data, options }) => promiseCatch(request({ url, method: 'POST', data, options })),
-  delete: ({ url, data, options }) => promiseCatch(request({ url, method: 'DELETE', data, options })),
-  put: ({ url, data, options }) => promiseCatch(request({ url, method: 'PUT', data, options })),
-  patch: ({ url, data, options }) => promiseCatch(request({ url, method: 'PATCH', data, options }))
+  get: <T>({ url, data, options }: HttpConfig): PromiseCatchResult<ResultData<T>> => promiseCatch(request({ url, method: 'GET', data, options })),
+  post: <T>({ url, data, options }: HttpConfig): PromiseCatchResult<ResultData<T>> => promiseCatch(request({ url, method: 'POST', data, options })),
+  delete: <T>({ url, data, options }: HttpConfig): PromiseCatchResult<ResultData<T>> => promiseCatch(request({ url, method: 'DELETE', data, options })),
+  put: <T>({ url, data, options }: HttpConfig): PromiseCatchResult<ResultData<T>> => promiseCatch(request({ url, method: 'PUT', data, options })),
+  // patch: <T>({ url, data, options }: HttpConfig): PromiseCatchResult<ResultData<T>> => promiseCatch(request({ url, method: 'PATCH', data, options }))
 }
 
 /**
@@ -88,21 +91,22 @@ export const http = {
  * @param {object} options 请求配置项
  * @return {*}
  */
-export const uploadFile = ({ url, filePath, name, options = {} }) => {
+export const uploadFile = ({ url, filePath, name, options = {} }: UploadFileConfig) => {
   return new Promise((resolve, reject) => {
-    const { needLoading = false, loadingText = sysConfig.loadingText, header = {} } = options
+    const { needLoading = false, loadingText = sysConfig.baseLoadingText, header = {} } = options
     needLoading && showLoading({
       title: loadingText
     })
-    header[sysConfig.szCoinBase.tokenName] = `${sysConfig.szCoinBase.tokenPrefix}${user.token}` || ''
+    header[sysConfig[alias].tokenName] = `${sysConfig[alias].tokenPrefix}${user.token}` || ''
+    // @ts-ignore
     wx.p
       .uploadFile({
-        url: `${sysConfig.szCoinBase.apiBaseUrl}${url}`,
+        url: `${sysConfig[alias].apiBaseUrl}${url}`,
         filePath,
         name,
-        header: Object.assign({}, sysConfig.szCoinBase.header, header)
+        header: Object.assign({}, sysConfig[alias].header, header)
       })
-      .then((response) => {
+      .then((response: any) => {
         if (response.statusCode !== HTTP_STATUS_ENUM.SUCCESS) {
           reject(response)
         }
@@ -110,7 +114,7 @@ export const uploadFile = ({ url, filePath, name, options = {} }) => {
         const dataFromJson = JSON.parse(data)
         resolve(dataFromJson)
       })
-      .catch((err) => {
+      .catch((err: any) => {
         reject(err)
       })
       .finally(() => {

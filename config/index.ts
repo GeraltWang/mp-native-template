@@ -8,7 +8,23 @@
  */
 import szCoinBase from './szCoinBase'
 
-export default {
+interface Config {
+  mpName: string
+  mpVersion: string
+  mpThemeColor: string
+  apiBaseUrl: string
+  ossBaseUrl: string
+  baseLoadingText: string
+  tokenName: string
+  tokenPrefix: string
+  header: object
+  storagePrefix: string
+  storageExpireTime: number
+  webviewUrl: object
+  [key: string]: any
+}
+
+export default <Config>{
   // 小程序名称
   mpName: 'MP-Template',
   // 小程序版本
@@ -23,6 +39,8 @@ export default {
   baseLoadingText: '加载中...',
   // token 名称
   tokenName: 'token',
+  // token prefix
+  tokenPrefix: '',
   // 默认请求头
   header: {},
   // 为本地存储添加统一的前缀

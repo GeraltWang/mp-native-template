@@ -8,6 +8,7 @@
  */
 
 const getSystemInfo = () => {
+  // @ts-ignore
   return wx.p.getSystemInfo().then((sysInfo) => {
     const result = {
       ...sysInfo,
@@ -72,12 +73,12 @@ const getSystemInfo = () => {
     result.navbarHeight = navbarHeight
     return result
     // storage.local.set('SYS_INFO', result)
-  }).catch(err => {
+  }).catch((err: any) => {
     console.log('systemInfo获取失败', err)
   })
 }
 
-const isIphoneX = (model) => {
+const isIphoneX = (model: string) => {
   return (
     model.includes('iPhoneX') ||
     model.includes('iPhone11') ||
@@ -87,7 +88,7 @@ const isIphoneX = (model) => {
   )
 }
 
-const deviceIdentifier = (model, pattern) => {
+const deviceIdentifier = (model: string, pattern: string) => {
   return model.includes(pattern)
 }
 

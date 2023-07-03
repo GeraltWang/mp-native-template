@@ -6,7 +6,13 @@
  * @FilePath: /mp-native-template/custom-tab-bar/data.js
  * @Description:
  */
-export default [
+export interface TabBarItem {
+  icon: string;
+  text: string;
+  url: string;
+}
+
+export default <TabBarItem[]>[
   {
     icon: 'home',
     text: '首页',

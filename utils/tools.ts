@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import sysConfig from '../config/index'
 
-export const formatTime = (date, template) => dayjs(date).format(template)
+export const formatTime = (date: any, template: string) => dayjs(date).format(template)
 
 /**
  * 格式化价格数额为字符串
@@ -9,12 +9,12 @@ export const formatTime = (date, template) => dayjs(date).format(template)
  * @param price 价格数额，以分为单位!
  * @param fill 是否填充小数部分 0-不填充 1-填充第一位小数 2-填充两位小数
  */
-export function priceFormat (price, fill = 0) {
+export function priceFormat (price: number, fill = 0): string | number {
   if (isNaN(price) || price === null || price === Infinity) {
     return price
   }
 
-  let priceFormatValue = Math.round(parseFloat(`${price}`) * 10 ** 8) / 10 ** 8 // 恢复精度丢失
+  let priceFormatValue: string | number = Math.round(parseFloat(`${price}`) * 10 ** 8) / 10 ** 8 // 恢复精度丢失
   priceFormatValue = `${Math.ceil(priceFormatValue) / 100}` // 向上取整，单位转换为元，转换为字符串
   if (fill > 0) {
     // 补充小数位数
@@ -35,7 +35,7 @@ export function priceFormat (price, fill = 0) {
  * @param {number} width 宽度，单位px
  * @param {number} [height] 可选，高度，不填时与width同值
  */
-export const cosThumb = (url, width, height = width) => {
+export const cosThumb = <T>(url: string, width: T, height: T = width) => {
   if (url.indexOf('?') > -1) {
     return url
   }
@@ -47,7 +47,7 @@ export const cosThumb = (url, width, height = width) => {
   return `${url}?imageMogr2/thumbnail/${~~width}x${~~height}`
 }
 
-export const get = (source, paths, defaultValue) => {
+export const get = (source: any, paths: string | string[], defaultValue: any) => {
   if (typeof paths === 'string') {
     paths = paths
       .replace(/\[/g, '.')
@@ -85,7 +85,7 @@ export const loadSystemWidth = () => {
  * - 布局(width: 172rpx)已经写好, 某些组件只接受px作为style或者prop指定
  *
  */
-export const rpx2px = (rpx, round = false) => {
+export const rpx2px = (rpx: number, round = false) => {
   loadSystemWidth()
 
   // px / systemWidth = rpx / 750
@@ -103,7 +103,7 @@ export const rpx2px = (rpx, round = false) => {
  * @param {string} phone 电话号
  * @returns
  */
-export const phoneEncryption = (phone) => {
+export const phoneEncryption = (phone: string) => {
   return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
 }
 
@@ -112,7 +112,7 @@ export const phoneEncryption = (phone) => {
  * @param {string} bankNo 银行卡号
  * @returns
  */
-export const bankEncryption = (bankNo) => {
+export const bankEncryption = (bankNo: string) => {
   return bankNo.replace(/(\d{5})\d{6}(\d{5})/, '$1******$2')
 }
 
@@ -121,7 +121,7 @@ export const bankEncryption = (bankNo) => {
  * @param {string} url
  * @return {*}
  */
-export const wrapperUrl = (url = '') => {
+export const wrapperUrl = (url: string = '') => {
   const checkUrl = url.startsWith('/') ? url : `/${url}`
   return `${sysConfig.ossBaseUrl}${checkUrl}?x-oss-process=image/format,webp`
 }
@@ -132,7 +132,7 @@ export const wrapperUrl = (url = '') => {
  * @param {string} targetVersion 目标sdk版本
  * @return {number} 0相同  1新版本 -1老版本
  */
-export const compareSdkVersion = (currentVersion, targetVersion) => {
+export const compareSdkVersion = (currentVersion: any, targetVersion: any): number => {
   currentVersion = currentVersion.split('.')
   targetVersion = targetVersion.split('.')
   const len = Math.max(currentVersion.length, targetVersion.length)
@@ -157,6 +157,11 @@ export const compareSdkVersion = (currentVersion, targetVersion) => {
   return 0
 }
 
+interface PromiseCatchResult<T> extends Array<T | null> {
+  0: T | null
+  1: T | null
+}
+
 /**
  * @description: promise catch 处理promise异常，避免频繁使用try catch
  * @param {Promise} promise
@@ -168,8 +173,8 @@ export const compareSdkVersion = (currentVersion, targetVersion) => {
  * }
  * // do something
  */
-export const promiseCatch = (promise) => {
-  return promise.then((data) => [null, data]).catch((err) => [err])
+export const promiseCatch = <T>(promise: any): PromiseCatchResult<T> => {
+  return promise.then((data: any) => [null, data]).catch((err: any) => [err, null])
 }
 
 /**
@@ -177,7 +182,7 @@ export const promiseCatch = (promise) => {
  * @param {number} t 等待时间
  * @return {*}
  */
-export const sleep = async (t) => new Promise((resolve) => setTimeout(resolve, t))
+export const sleep = async (t: number) => new Promise((resolve) => setTimeout(resolve, t))
 
 /**
  * @description: formatNumber 千分位
@@ -187,7 +192,7 @@ export const sleep = async (t) => new Promise((resolve) => setTimeout(resolve, t
  * formatNumber(123456789) // 123,456,789
  * formatNumber(123456789.123) // 123,456,789.123
  */
-export function formatNumber (num) {
+export function formatNumber (num: number | string) {
   num = num + ''
   if (!num.includes('.')) {
     num += '.'
@@ -204,7 +209,7 @@ export function formatNumber (num) {
  * @param {number} num
  * @return {*}
  */
-export function formatNumberRound (num) {
+export function formatNumberRound (num: number) {
   return (Math.round(num * 100) / 100).toFixed(2)
 }
 
@@ -213,7 +218,7 @@ export function formatNumberRound (num) {
  * @param {*} num
  * @return {*}
  */
-export function handleNumber (num) {
+export function handleNumber (num: number) {
   if (num === 0) {
     return formatNumberRound(num)
   } else {

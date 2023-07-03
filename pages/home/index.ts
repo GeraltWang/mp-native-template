@@ -8,7 +8,7 @@
  */
 // pages/home/home.js
 import { userBehavior } from '../../behaviors/store/user'
-import { getMemberInfo } from '../../api/sz-coin-base/model/test'
+import { getMemberInfo } from '../../api/szCoinBase/model/test'
 import getWxOpenId from '../../utils/wx/getOpenId'
 import sceneHandler from '../../utils/wx/sceneHandler'
 const app = getApp()

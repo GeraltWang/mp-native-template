@@ -16,12 +16,12 @@ export default {
      * @param {string} key 数据在本地存储中的键
      * @return {*}
      */
-    get (key) {
+    get (key: string) {
       try {
         const value = wx.getStorageSync(`${sysConfig.storagePrefix}${key}`)
         if (value) {
           const nowTime = new Date().getTime()
-          if (nowTime > value.datetime && value.datetime !== 0) {
+          if (nowTime > value.dateTime && value.dateTime !== 0) {
             wx.removeStorageSync(`${sysConfig.storagePrefix}${key}`)
             return null
           }
@@ -37,14 +37,14 @@ export default {
      * @param {any} data 需要存储数据
      * @param {string | number} dateTime 缓存有效期 单位(天)
      */
-    set (key, data, dateTime = sysConfig.storageExpireTime) {
+    set (key: string, data: any, dateTime: string | number = sysConfig.storageExpireTime) {
       try {
         const cacheValue = {
           content: data,
           dateTime:
-            parseInt(dateTime) === 0
+            parseInt(dateTime as unknown as string) === 0
               ? 0
-              : new Date().getTime() + parseInt(dateTime) * 24 * 3600 * 1000
+              : new Date().getTime() + parseInt(dateTime as unknown as string) * 24 * 3600 * 1000
         }
         wx.setStorageSync(`${sysConfig.storagePrefix}${key}`, cacheValue)
       } catch (error) {
@@ -58,14 +58,14 @@ export default {
      * @param {string | number} dateTime 缓存有效期 单位(天)
      * @return {*}
      */
-    async asyncSet (key, data, dateTime = sysConfig.storageExpireTime) {
+    async asyncSet (key: string, data: any, dateTime: string | number = sysConfig.storageExpireTime) {
       try {
         const cacheValue = {
           content: data,
           dateTime:
-            parseInt(dateTime) === 0
+            parseInt(dateTime as unknown as string) === 0
               ? 0
-              : new Date().getTime() + parseInt(dateTime) * 24 * 3600 * 1000
+              : new Date().getTime() + parseInt(dateTime as unknown as string) * 24 * 3600 * 1000
         }
         await wx.setStorage({
           key: `${sysConfig.storagePrefix}${key}`,
@@ -80,7 +80,7 @@ export default {
      * @param {string} key 数据在本地存储中的键
      * @return {*}
      */
-    remove (key) {
+    remove (key: string) {
       try {
         wx.removeStorageSync(`${sysConfig.storagePrefix}${key}`)
       } catch (error) {
@@ -92,7 +92,7 @@ export default {
      * @param {string} key 数据在本地存储中的键
      * @return {*}
      */
-    async asyncRemove (key) {
+    async asyncRemove (key: string) {
       try {
         await wx.removeStorage({ key: `${sysConfig.storagePrefix}${key}` })
       } catch (error) {

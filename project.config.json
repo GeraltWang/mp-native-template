@@ -1,5 +1,6 @@
 {
   "compileType": "miniprogram",
+  "miniprogramRoot": "",
   "setting": {
     "coverView": true,
     "es6": true,
@@ -14,6 +15,7 @@
       "outputPath": ""
     },
     "useCompilerPlugins": [
+      "typescript",
       "sass"
     ],
     "ignoreUploadUnusedFiles": true,

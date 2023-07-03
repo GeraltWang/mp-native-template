@@ -7,7 +7,7 @@
  * @Description:
  */
 import { BehaviorWithStore } from 'mobx-miniprogram-bindings'
-import { userStoreConfig } from '../conifg'
+import { userStoreConfig } from '../config'
 
 export const userBehavior = BehaviorWithStore({
   storeBindings: [

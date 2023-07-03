@@ -6,8 +6,8 @@
  * @FilePath: /mp-native-template/utils/wx/getOpenId.js
  * @Description:
  */
-import { getOpenId } from '../../api/sz-coin-base/model/test'
-import { CODE_ENUM } from '../../api/sz-coin-base/enum/index'
+import { getOpenId } from '../../api/szCoinBase/model/test'
+import { CODE_ENUM } from '../../api/szCoinBase/enum/index'
 import { user } from '../../store/index'
 
 // 已重试次数
@@ -19,12 +19,13 @@ let retryCount = 0
  */
 const getWxOpenId = async (maxRetry = 2) => {
   // 调用wx.login获取code
+  // @ts-ignore
   const wxRes = await wx.p.login()
   // 调用后台获取openid
   const [error, apiRes] = await getOpenId({
     js_code: wxRes.code
   })
-  // 获取opedid失败
+  // 获取openid失败
   if (error) {
     // 401 403 不重试
     if (error.code === CODE_ENUM.FORBIDDEN || error.code === CODE_ENUM.UNAUTHORIZED) {
@@ -41,6 +42,7 @@ const getWxOpenId = async (maxRetry = 2) => {
   // 获取openid成功
   } else {
     user.updateOpenid(apiRes.data.openid || null, true)
+    return [null, apiRes]
   }
 }
 

@@ -31,6 +31,7 @@ export const showToast = async (
   } = {}
 ) => {
   try {
+    // @ts-ignore
     await wx.p.showToast({
       title,
       icon,
@@ -39,6 +40,7 @@ export const showToast = async (
     })
     success()
   } catch (error) {
+    // @ts-ignore
     fail(error)
   } finally {
     complete()
@@ -75,6 +77,7 @@ export const showModal = async (
   } = {}
 ) => {
   try {
+    // @ts-ignore
     const res = await wx.p.showModal({
       title,
       content,
@@ -86,11 +89,14 @@ export const showModal = async (
     })
     console.log(res)
     if (res.confirm) {
+      // @ts-ignore
       success(res)
     } else {
+      // @ts-ignore
       fail(res)
     }
   } catch (error) {
+    // @ts-ignore
     fail(error)
   } finally {
     complete()

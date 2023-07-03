@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "module": "CommonJS",
+    "target": "ES2020",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "noImplicitThis": false,
+    "noImplicitReturns": true,
+    "alwaysStrict": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "strict": false,
+    "strictPropertyInitialization": true,
+    "lib": ["ES2020"],
+    "typeRoots": [
+      "./node_modules/miniprogram-api-typings"
+    ],
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules"]
+}
