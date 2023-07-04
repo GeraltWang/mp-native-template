@@ -12,7 +12,6 @@ import { showLoading, hideLoading } from '../../utils/wx/interaction'
 import { promiseCatch } from '../../utils/tools'
 import { CODE_ENUM, HTTP_STATUS_ENUM } from './enum/index'
 import { user } from '../../store/index'
-import { SpecResult, RequestConfig, Result, ResultData, PromiseCatchResult, HttpConfig, UploadFileConfig } from './interface/request'
 
 const alias = 'szCoinBase'
 

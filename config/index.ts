@@ -8,22 +8,6 @@
  */
 import szCoinBase from './szCoinBase'
 
-interface Config {
-  mpName: string
-  mpVersion: string
-  mpThemeColor: string
-  apiBaseUrl: string
-  ossBaseUrl: string
-  baseLoadingText: string
-  tokenName: string
-  tokenPrefix: string
-  header: object
-  storagePrefix: string
-  storageExpireTime: number
-  webviewUrl: object
-  [key: string]: any
-}
-
 export default <Config>{
   // 小程序名称
   mpName: 'MP-Template',
