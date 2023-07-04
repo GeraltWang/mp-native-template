@@ -7,6 +7,7 @@
  * @Description:
  */
 // package-charts/components/my-ec-canvas/index.js
+// @ts-expect-error
 import * as echarts from '../../libs/echarts.min'
 
 Component({
@@ -48,7 +49,7 @@ Component({
       this[this.data.chartLineId] = this.selectComponent('#' + this.data.chartLineId) // 通过`id`获取echarts组件
       this.initChart()
     },
-    detached (e) {
+    detached () {
       this[this.data.chartLineId] = null
       this[this.data.canvasId] = null
     }
@@ -59,7 +60,7 @@ Component({
    */
   methods: {
     initChart () {
-      this[this.data.chartLineId].init((canvas, width, height, dpr) => {
+      this[this.data.chartLineId].init((canvas: any, width: any, height: any, dpr: any) => {
         const chart = echarts.init(canvas, null, {
           width,
           height,
