@@ -47,6 +47,7 @@ module.exports = {
     'no-irregular-whitespace': 'off', // 禁止不规则的空白
     'space-before-function-paren': ['error', 'always'],
     'no-empty-function': 'off',
+    'no-empty': 'off',
     // ts
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
