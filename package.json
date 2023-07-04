@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "miniprogram-api-promise": "^1.0.4",
-    "miniprogram-computed": "^4.3.8",
+    "miniprogram-computed": "^4.4.0",
     "mobx-miniprogram": "^4.13.2",
     "mobx-miniprogram-bindings": "^2.1.5",
     "tdesign-miniprogram": "^1.1.10"
