@@ -14,7 +14,6 @@ const realtimeLogger = wx.getRealtimeLogManager ? wx.getRealtimeLogManager() : n
 // 版本
 const version = sysConfig.mpVersion
 
-
 export default {
   info (...args: any[]) {
     if (!realtimeLogger) return

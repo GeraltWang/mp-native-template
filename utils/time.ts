@@ -29,7 +29,7 @@ export function getMonth (suffix = '月') {
  * @example: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ..., 31]
  * @return {array} dateOfMonth 指定月份日期组成的数组
  */
-export function getDateOfMonth (year, month) {
+export function getDateOfMonth (year: number, month: number) {
   let d = new Date(year, month, 0)
   const days = d.getDate()
   let dateOfMonth = []
@@ -58,6 +58,17 @@ export function getLastSeveralYears (yearsCount = 10) {
  * @param {number} year 年份
  * @return {boolean} isLeapYear 是否是闰年
  */
-export function isLeapYear (year) {
+export function isLeapYear (year: number) {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
+}
+
+/**
+ * @description: 传入一个日期，将这个日期转换成毫秒数
+ * @param {string | number | Date} date 日期
+ * @return {number} ms 毫秒数
+ * @example: 2021-05-12 15:33:36 => 1620803616000
+ * @example: 1620803616000 => 1620803616000
+ */
+export function dateToMs (date: string | number | Date) {
+  return new Date(date).getTime()
 }

@@ -121,7 +121,7 @@ export const bankEncryption = (bankNo: string) => {
  * @param {string} url
  * @return {*}
  */
-export const wrapperUrl = (url: string = '') => {
+export const wrapperUrl = (url = '') => {
   const checkUrl = url.startsWith('/') ? url : `/${url}`
   return `${sysConfig.ossBaseUrl}${checkUrl}?x-oss-process=image/format,webp`
 }
@@ -186,7 +186,7 @@ export const sleep = async (t: number) => new Promise((resolve) => setTimeout(re
 
 /**
  * @description: formatNumber 千分位
- * @param {*} num
+ * @param {number | string} num
  * @return {*}
  * @example
  * formatNumber(123456789) // 123,456,789
