@@ -31,7 +31,7 @@ class SceneHandler {
    * @description: 设置场景值
    * @return {*}
    */
-  setScene () {
+  initScene () {
     const enterOption = wx.getEnterOptionsSync()
     this.scene = enterOption.scene
     this.path = enterOption.path

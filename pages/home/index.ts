@@ -56,7 +56,7 @@ Page({
    */
   onShow () {
     this.getTabBar().init()
-    const scene = sceneHandler.setScene()
+    const scene = sceneHandler.initScene()
     console.log(scene.getEnterOptions())
   },
 

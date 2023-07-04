@@ -1,4 +1,6 @@
 // pages/usercenter/index.js
+import sceneHandler from '../../utils/wx/sceneHandler'
+
 const menuData = [
   [
     {
@@ -53,8 +55,8 @@ Page({
   },
   getVersionInfo () {
     const versionInfo = wx.getAccountInfoSync()
-    const { version, envVersion = __wxConfig } = versionInfo.miniProgram
-    console.log(envVersion, __wxConfig)
+    const { version, envVersion } = versionInfo.miniProgram
+    console.log(envVersion)
     this.setData({
       versionNo: envVersion === 'release' ? version : envVersion
     })
@@ -78,6 +80,8 @@ Page({
    */
   onShow () {
     this.getTabBar().init()
+    const scene = sceneHandler.initScene()
+    console.log(scene.getEnterOptions())
   },
 
   /**
