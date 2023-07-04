@@ -97,7 +97,6 @@ export const uploadFile = ({ url, filePath, name, options = {} }: UploadFileConf
       title: loadingText
     })
     header[sysConfig[alias].tokenName] = `${sysConfig[alias].tokenPrefix}${user.token}` || ''
-    // @ts-ignore
     wx.p
       .uploadFile({
         url: `${sysConfig[alias].apiBaseUrl}${url}`,

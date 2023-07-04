@@ -5,9 +5,8 @@
  * @LastEditTime: 2023-04-14 16:00:16
  * @FilePath: /mp-native-template/api/szCoinBase/enum/index.js
  * @Description:
- *
- * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved.
  */
+
 export enum CODE_ENUM {
   SUCCESS = 0,
   UNAUTHORIZED = 10001,

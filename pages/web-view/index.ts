@@ -7,11 +7,11 @@ Page({
   data: {
     address: ''
   },
-  decodeParams (options) {
+  decodeParams (options: Recordable<string | undefined>) {
     console.log(options)
     const { url } = options
     if (!url) {
-      return false
+      return
     }
     this.setData({
       address: decodeURIComponent(url)
