@@ -14,11 +14,13 @@ import sysConfig from './config/index'
 import { global } from './store/index'
 // @ts-ignore
 import { promisifyAll } from 'miniprogram-api-promise'
+import { behavior as computedBehavior } from 'miniprogram-computed'
 
 // @ts-ignore
 const wxp = wx.p = {}
-// @ts-ignore
+
 promisifyAll(wx, wx.p)
+wx.computedBehavior = computedBehavior
 
 App({
   globalData: {

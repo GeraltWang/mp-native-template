@@ -19,7 +19,6 @@ let retryCount = 0
  */
 const getWxOpenId = async (maxRetry = 2) => {
   // 调用wx.login获取code
-  // @ts-ignore
   const wxRes = await wx.p.login()
   // 调用后台获取openid
   const [error, apiRes] = await getOpenId({

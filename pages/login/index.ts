@@ -2,10 +2,9 @@
 import { showToast } from '../../utils/wx/interaction'
 import storage from '../../utils/wx/storage'
 import { userBehavior } from '../../behaviors/store/user'
-const computedBehavior = require('miniprogram-computed').behavior
 
 Page({
-  behaviors: [userBehavior, computedBehavior],
+  behaviors: [userBehavior, wx.computedBehavior],
   /**
    * 页面的初始数据
    */
@@ -35,12 +34,12 @@ Page({
     }
   },
   computed: {
-    testComputed (data) {
-      return data.isAgree
+    testComputed ({ isAgree }: { isAgree: boolean }): boolean {
+      return isAgree
     }
   },
   // 获取手机号 - 登录
-  doLogin (e) {
+  doLogin (e: any) {
     if (!this.data.isAgree) {
       showToast({
         title: '请审慎阅读并同意《隐私权政策》、《注册协议》'
@@ -66,7 +65,7 @@ Page({
     storage.local.remove('AGREE_POLICY')
   },
   // 同意/不同意协议
-  onAgreeChange (e) {
+  onAgreeChange (e: any) {
     this.setData({
       isAgree: e.detail.checked
     })

@@ -9,3 +9,10 @@ type ReadonlyRecordable<T = any> = {
 type Indexable<T = any> = {
   [key: string]: T;
 };
+
+declare namespace WechatMiniprogram {
+  interface Wx {
+    p: any,
+    computedBehavior: any
+  }
+}
