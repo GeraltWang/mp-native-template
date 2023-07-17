@@ -1,4 +1,14 @@
 {
+  "lint-staged": {
+    "**/*.ts": [
+      "eslint --ext .ts --fix --quiet --ignore-path .gitignore ./"
+    ]
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "eslint --ext .ts --fix --quiet --ignore-path .gitignore ./",
+    "lint-staged": "lint-staged"
+  },
   "dependencies": {
     "miniprogram-api-promise": "^1.0.4",
     "miniprogram-computed": "^4.4.0",
@@ -7,6 +17,8 @@
     "tdesign-miniprogram": "^1.1.10"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
     "eslint": "7.32.0",
@@ -14,6 +26,8 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "4.3.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "miniprogram-api-typings": "^3.10.0"
   }
 }
