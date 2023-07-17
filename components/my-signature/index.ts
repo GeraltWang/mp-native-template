@@ -1,9 +1,9 @@
 /*
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-05-15 09:39:03
- * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-05-15 17:09:58
- * @FilePath: /mp-native-template/components/my-signature/index.js
+ * @LastEditors: GeraltWang
+ * @LastEditTime: 2023-07-17 23:30:56
+ * @FilePath: \mp-native-template\components\my-signature\index.ts
  * @Description:
  */
 const MAX_V = 1 // 最大书写速度
@@ -12,8 +12,8 @@ const MAX_LINE_WIDTH = 12 // 最大笔画宽度
 const MIN_LINE_WIDTH = 4 // 最小笔画宽度
 const MAX_LINE_DIFF = 0.03 // 两点之间笔画宽度最大差异
 let canvasObj = null // canvas对象
-let context = null // canvas上下文
-let lastPoint = null
+let context: any = null // canvas上下文
+let lastPoint: any = null
 
 Component({
   options: {
@@ -36,7 +36,7 @@ Component({
     detached () {}
   },
   methods: {
-    catchTouchStart (e) {
+    catchTouchStart (e: any) {
       const { offsetLeft, offsetTop } = e.currentTarget
       const { clientX, clientY } = e.changedTouches[0]
       lastPoint = {
@@ -46,7 +46,7 @@ Component({
         w: (MAX_LINE_WIDTH + MIN_LINE_WIDTH) / 2 /* 默认宽度 */
       }
     },
-    catchTouchMove (e) {
+    catchTouchMove (e: any) {
       const { draw } = this.data
       const { offsetLeft, offsetTop } = e.currentTarget
       const { clientX, clientY } = e.changedTouches[0]
@@ -72,11 +72,11 @@ Component({
       }
       lastPoint = currPoint // 结束前保存当前点为上一点
     },
-    catchTouchEnd (e) {
+    catchTouchEnd (e: any) {
       lastPoint = null // 每笔画完清除缓存
     },
     // 计算当前点的宽度，书写速度越快，笔画宽度越小，呈现出笔锋的感觉（笑）
-    calcLineWidth (currPoint) {
+    calcLineWidth (currPoint: any) {
       let consuming = currPoint.t - lastPoint.t // 两点之间耗时
       if (!consuming) return lastPoint.w // 如果当前点用时为0，返回上点的宽度。
       let maxWidth = Math.min(MAX_LINE_WIDTH, lastPoint.w * (1 + MAX_LINE_DIFF)) // 当前点的最大宽度

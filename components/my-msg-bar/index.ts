@@ -1,9 +1,9 @@
 /*
  * @Author: 王昶 wgeralt@outlook.com
  * @Date: 2023-04-14 13:44:05
- * @LastEditors: 王昶 wgeralt@outlook.com
- * @LastEditTime: 2023-04-14 17:58:43
- * @FilePath: /mp-native-template/components/my-msg-bar/index.js
+ * @LastEditors: GeraltWang
+ * @LastEditTime: 2023-07-17 23:30:23
+ * @FilePath: \mp-native-template\components\my-msg-bar\index.ts
  * @Description:
  *
  * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved.
@@ -67,8 +67,8 @@ Component({
      * @param {*} msgData
      * @return {*}
      */
-    filterMsgData (msgData) {
-      return msgData.map(item => item[this.data.msgProps.label])
+    filterMsgData (msgData: any) {
+      return msgData.map((item: any) => item[this.data.msgProps.label])
     }
   }
 })

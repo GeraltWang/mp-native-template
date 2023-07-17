@@ -11,7 +11,7 @@ Component({
   properties: {
     // 验证码发送请求
     apiObj: {
-      type: Function,
+      type: Object,
       value: async () => {}
     },
     // 输入框距离键盘的距离
@@ -50,14 +50,14 @@ Component({
         showToast({
           title: '验证码已发送，请稍后'
         })
-        return false
+        return
       }
       // 手机号检查
       if (!verifyPhone(phone)) {
         showToast({
           title: '手机号格式不正确'
         })
-        return false
+        return
       }
       try {
         // 发送验证码
@@ -70,7 +70,7 @@ Component({
         this.setData({
           isCaptchaSend: true
         }, () => {
-          let timer = null
+          let timer: any
           clearInterval(timer)
           const TIME_COUNT = 60
           timer = setInterval(() => {
@@ -80,6 +80,9 @@ Component({
                 countDown: countDown - 1
               })
             } else {
+              if (timer) {
+                clearInterval(timer)
+              }
               clearInterval(timer)
               timer = null
               this.setData({
@@ -100,7 +103,7 @@ Component({
    * @param {object} e
    * @return {*}
    */
-    onCaptchaInput (e) {
+    onCaptchaInput (e: any) {
       const { value } = e.detail
       this.setData({
         captcha: value
@@ -141,7 +144,7 @@ Component({
         showToast({
           title: '验证码格式不正确'
         })
-        return false
+        return
       }
       this.triggerEvent('on-confirm', captcha)
       this.closeDialog()
