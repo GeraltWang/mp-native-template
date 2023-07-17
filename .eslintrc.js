@@ -1,3 +1,13 @@
+/*
+ * @Author: GeraltWang
+ * @Date: 2023-07-17 23:32:10
+ * @LastEditors: GeraltWang
+ * @LastEditTime: 2023-07-17 23:33:30
+ * @FilePath: \mp-native-template\.eslintrc.js
+ * @Description: 
+ * 
+ * 
+ */
 module.exports = {
   env: {
     browser: true,
@@ -37,7 +47,6 @@ module.exports = {
   rules: {
     // js
     indent: ['error', 2],
-    'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'no-unused-vars': 'off',
@@ -52,6 +61,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-unused-vars': 'off'
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-this-alias': 'off',
   },
 }
