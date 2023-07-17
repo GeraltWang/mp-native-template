@@ -22,26 +22,26 @@ export default <Color>{
    * @return {*}
    */
   hexToRgb (hex: string = sysConfig.mpThemeColor): number[] | null {
-		const match = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i)
-		if (!match) {
-			return null
-		}
-		const r = parseInt(match[1], 16)
-		const g = parseInt(match[2], 16)
-		const b = parseInt(match[3], 16)
-		return [r, g, b]
-	},
+    const match = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i)
+    if (!match) {
+      return null
+    }
+    const r = parseInt(match[1], 16)
+    const g = parseInt(match[2], 16)
+    const b = parseInt(match[3], 16)
+    return [r, g, b]
+  },
   /**
    * @description: rgb颜色转hex颜色
    */
   //rgb颜色转hex颜色
-	rgbToHex (a: number, b: number, c: number) {
-		let hexs = [a.toString(16), b.toString(16), c.toString(16)]
-		for (let i = 0; i < 3; i++) {
-			if (hexs[i].length == 1) hexs[i] = '0' + hexs[i]
-		}
-		return '#' + hexs.join('')
-	},
+  rgbToHex (a: number, b: number, c: number) {
+    let hexs = [a.toString(16), b.toString(16), c.toString(16)]
+    for (let i = 0; i < 3; i++) {
+      if (hexs[i].length == 1) hexs[i] = '0' + hexs[i]
+    }
+    return '#' + hexs.join('')
+  },
   /**
    * @description: 颜色变深
    * @param {*} color
