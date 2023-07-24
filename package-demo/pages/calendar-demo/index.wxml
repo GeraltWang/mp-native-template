@@ -1,0 +1,7 @@
+<view class="static-page">
+  <button class="btn" bind:tap="showCalendar">show</button>
+  <!-- <button class="btn" bind:tap="toast"></button> -->
+  <!-- <button class="btn" bind:tap="loading">loading</button> -->
+  <!-- <button class="btn" bind:tap="hideLoading">hide loading</button> -->
+</view>
+<my-calendar id="my-calendar"></my-calendar>

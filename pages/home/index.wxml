@@ -6,6 +6,7 @@
     <t-cell title="提示示例" url="/package-demo/pages/interaction-demo/index" arrow></t-cell>
     <t-cell title="水印示例" url="/package-demo/pages/water-mark-demo/index" arrow></t-cell>
     <t-cell title="签名示例" url="/package-demo/pages/signature-demo/index" arrow></t-cell>
+    <t-cell title="日历示例" url="/package-demo/pages/calendar-demo/index" arrow></t-cell>
   </t-cell-group>
 </view>
 <my-t-message id="my-t-message"></my-t-message>

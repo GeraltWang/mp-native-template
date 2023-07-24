@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "日历示例",
+  "usingComponents": {
+    "my-calendar": "/components/my-calendar/index"
+  }
+}

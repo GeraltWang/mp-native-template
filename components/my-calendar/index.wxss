@@ -1,0 +1,192 @@
+.my-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9996;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(.11,.34,.51,.98);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.my-mask.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.my-calendar {
+  width: 100%;
+  min-height: 20rpx;
+  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: all 0.4s cubic-bezier(0.77, 0.16, 0.32, 0.95);
+  background-color: #ffffff;
+  border-radius: 24rpx 24rpx 0 0;
+  overflow: hidden;
+}
+
+.my-calendar.show {
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.my-calendar-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  height: 80rpx;
+  font-size: 32rpx;
+  background-color: #ffffff;
+}
+
+.my-calendar-header::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #eaeef1;
+  transform: scaleY(0.5) translateZ(0);
+  transform-origin: 0 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.my-calendar-date-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx 0;
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.my-calendar-date-box::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #eaeef1;
+  transform: scaleY(0.5) translateZ(0);
+  transform-origin: 0 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.my-calendar-date-time {
+  padding: 0 20rpx;
+  font-size: 32rpx;
+}
+
+.my-calendar-weekdays {
+  position: relative;
+  display: flex;
+  box-shadow: 0 16rpx 20rpx -16rpx #efefef;
+  background-color: #ffffff;
+}
+
+.my-calendar-weekdays .my-calendar-weekdays-item {
+  flex: 1;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999999;
+  padding: 18rpx 0;
+}
+
+.my-calendar-weekdays ::after {
+  content: "";
+  position: absolute;
+  border-bottom: 1px solid #eaeef1;
+  transform: scaleY(0.5) translateZ(0);
+  transform-origin: 0 100%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.my-calendar-days {
+  position: relative;
+  padding: 12rpx;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: 1fr;
+  z-index: 2;
+  background-color: #ffffff;
+}
+
+.my-calendar-days .my-calendar-days-item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8rpx;
+}
+
+.my-calendar-days-item-date {
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.my-calendar-days-item-lunar {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.my-calendar-days-item.selected {
+  background-color: #006eff;
+}
+
+.my-calendar-days-item.selected > .my-calendar-days-item-date {
+  color: #ffffff;
+}
+
+.my-calendar-days-item.selected > .my-calendar-days-item-lunar {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.my-calendar-days-month-watermark {
+  position: absolute;
+  font-size: 180rpx;
+  color: rgba(0, 0, 0, 0.18);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.my-calendar-handle {
+  padding: 10rpx 30rpx;
+  box-shadow: 0 -16rpx 20rpx -16rpx #efefef;
+  background-color: #ffffff;
+}
+
+.my-calendar-btn {
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-calendar-btn.block {
+  height: 76rpx;
+  border-radius: 76rpx;
+  background-color: #006eff;
+  color: #ffffff;
+}

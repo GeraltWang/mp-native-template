@@ -1,0 +1,25 @@
+<view class="my-calendar {{ visible ? 'show' : '' }}">
+  <view class="my-calendar-header"> 日历组件 </view>
+  <view class="my-calendar-date-box">
+    <view class="my-calendar-btn"> 《 </view>
+    <view class="my-calendar-btn"> 《 </view>
+    <view class="my-calendar-date-time"> 2023年1月 </view>
+    <view class="my-calendar-btn"> 》 </view>
+    <view class="my-calendar-btn"> 》 </view>
+  </view>
+  <view class="my-calendar-weekdays">
+    <view class="my-calendar-weekdays-item" wx:for="{{ WeekDays }}" wx:key="*this"> {{ item }} </view>
+  </view>
+  <view class="my-calendar-days">
+    <view class="my-calendar-days-item" wx:for="{{ emptyDays }}" wx:key="*this"></view>
+    <view class="my-calendar-days-item {{ item === 1 ? 'selected' : '' }}" wx:for="{{ days }}" wx:key="*this">
+      <view class="my-calendar-days-item-date"> {{ item + 1 }} </view>
+      <view class="my-calendar-days-item-lunar"> {{ lunarDaysArr[index] }} </view>
+    </view>
+    <view class="my-calendar-days-month-watermark"> {{ month }} </view>
+  </view>
+  <view class="my-calendar-handle">
+    <view class="my-calendar-btn block"> 确定 </view>
+  </view>
+</view>
+<view class="my-mask {{ visible ? 'show' : '' }}" bind:tap="onTapMask"></view>
