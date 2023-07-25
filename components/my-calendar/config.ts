@@ -7,6 +7,11 @@ export const WeekDays = ['日', '一', '二', '三', '四', '五', '六']
  * @returns 
  */
 export const getYearAndMonthAndDay = (date?: string): { year: number, month: number, day: number } => {
+  /// 兼容ios date格式
+  /// 处理方式：new Date('2021-09-01') => new Date('2021/09/01')
+  if (date) {
+    date = date.replace(/-/g, '/')
+  }
   const d = date ? new Date(date) : new Date()
   let year = d.getFullYear()
   let month = d.getMonth()
@@ -37,4 +42,9 @@ export const getDaysOfMonth = (year: number, month: number): number => {
  */
 export const getFirstDayOfMonth = (year: number, month: number) => {
   return new Date(year, month, 1).getDay()
+}
+
+export enum CalendarType {
+  Single = 'single',
+  Range = 'range'
 }
