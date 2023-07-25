@@ -1,25 +1,81 @@
-<view class="my-calendar {{ visible ? 'show' : '' }}">
-  <view class="my-calendar-header"> 日历组件 </view>
-  <view class="my-calendar-date-box">
-    <view class="my-calendar-btn"> 《 </view>
-    <view class="my-calendar-btn"> 《 </view>
-    <view class="my-calendar-date-time"> 2023年1月 </view>
-    <view class="my-calendar-btn"> 》 </view>
-    <view class="my-calendar-btn"> 》 </view>
-  </view>
-  <view class="my-calendar-weekdays">
-    <view class="my-calendar-weekdays-item" wx:for="{{ WeekDays }}" wx:key="*this"> {{ item }} </view>
-  </view>
-  <view class="my-calendar-days">
-    <view class="my-calendar-days-item" wx:for="{{ emptyDays }}" wx:key="*this"></view>
-    <view class="my-calendar-days-item {{ item === 1 ? 'selected' : '' }}" wx:for="{{ days }}" wx:key="*this">
-      <view class="my-calendar-days-item-date"> {{ item + 1 }} </view>
-      <view class="my-calendar-days-item-lunar"> {{ lunarDaysArr[index] }} </view>
+<view class="my-calendar-class" catch:touchmove="stop">
+  <view class="my-calendar {{ visible ? 'show' : '' }}">
+    <view class="my-calendar-header"> {{ title }} </view>
+    <view class="my-calendar-date-box">
+      <view class="my-calendar-btn circle mr-18" data-add="0" bind:tap="changeYear">
+        <text class="my my-arrow-left"> </text>
+      </view>
+      <view class="my-calendar-btn circle mr-18" data-add="0" bind:tap="changeMonth">
+        <text class="my my-arrow-left"> </text>
+      </view>
+      <view class="my-calendar-date-time"> {{ dateForDisplay }} </view>
+      <view class="my-calendar-btn circle ml-18" data-add="1" bind:tap="changeMonth">
+        <text class="my my-arrow-right"> </text>
+      </view>
+      <view class="my-calendar-btn circle ml-18" data-add="1" bind:tap="changeYear">
+        <text class="my my-arrow-right"> </text>
+      </view>
     </view>
-    <view class="my-calendar-days-month-watermark"> {{ month }} </view>
+    <view class="my-calendar-weekdays">
+      <view class="my-calendar-weekdays-item" wx:for="{{ WeekDays }}" wx:key="*this"> {{ item }} </view>
+    </view>
+    <view class="my-calendar-content">
+      <view class="my-calendar-days">
+        <view class="my-calendar-days-item" wx:for="{{ emptyDays }}" wx:key="*this"></view>
+        <view
+          class="my-calendar-days-item {{ type == CalendarType.Single && this.selectedDay(year, month + 1, item + 1, activeDate) ? 'selected' : '' }} {{ type == CalendarType.Range && this.selectedDay(year, month + 1, item + 1, activeStartDate) ? 'selected' : '' }} {{ type == CalendarType.Range && this.selectedDay(year, month + 1, item + 1, activeEndDate) ? 'selected' : '' }} {{ type == CalendarType.Range && this.betweenDay(year, month + 1, item + 1, activeStartDate, activeEndDate) ? 'between' : '' }} {{ this.disableDay(year, month + 1, item + 1, min, max) ? 'disabled' : '' }}"
+          wx:for="{{ days }}"
+          wx:key="*this"
+          data-index="{{ index }}"
+          bind:tap="selectDate"
+        >
+          <view class="my-calendar-days-item-date"> {{ item + 1 }} </view>
+          <view class="my-calendar-days-item-lunar"> {{ lunarDaysArr[index] }} </view>
+        </view>
+      </view>
+      <view class="my-calendar-days-watermark"> {{ month + 1 }} </view>
+    </view>
+    <view class="my-calendar-selected-display">
+      <block wx:if="{{ type === CalendarType.Single }}">
+        {{ activeDate }}
+      </block>
+      <block wx:if="{{ type === CalendarType.Range }}">
+        {{ activeStartDate + "至" + activeEndDate }}
+      </block>
+    </view>
+    <view class="my-calendar-handle">
+      <view class="my-calendar-btn block" bind:tap="onConfirm"> 确定 </view>
+    </view>
   </view>
-  <view class="my-calendar-handle">
-    <view class="my-calendar-btn block"> 确定 </view>
-  </view>
+  <view class="my-mask {{ visible ? 'show' : '' }}" bind:tap="onTapMask"></view>
 </view>
-<view class="my-mask {{ visible ? 'show' : '' }}" bind:tap="onTapMask"></view>
+<wxs module="this">
+module.exports = {
+  selectedDay: function (year, month, day, activeDate) {
+    var padMonth = month < 10 ? "0" + month : month;
+    var padDay = day < 10 ? "0" + day : day;
+    var selectedDay = year + "-" + padMonth + "-" + padDay;
+    return selectedDay === activeDate;
+  },
+  betweenDay: function (year, month, day, activeStartDate, activeEndDate) {
+    var padMonth = month < 10 ? "0" + month : month;
+    var padDay = day < 10 ? "0" + day : day;
+    var selectedDay = year + "-" + padMonth + "-" + padDay;
+    var startDate = getDate(activeStartDate).getTime();
+    var endDate = getDate(activeEndDate).getTime();
+    var selectedDate = getDate(selectedDay).getTime();
+    return selectedDate >= startDate && selectedDate <= endDate;
+  },
+  disableDay: function (year, month, day, min, max) {
+    var bool = true;
+    var date = year + "/" + month + "/" + day;
+    var minDate = min.year + "/" + (min.month + 1) + "/" + min.day;
+    var maxDate = max.year + "/" + (max.month + 1) + "/" + max.day;
+    var timestamp = getDate(date).getTime();
+    if (timestamp >= getDate(minDate).getTime() && timestamp <= getDate(maxDate).getTime()) {
+      bool = false;
+    }
+    return bool;
+  }
+}
+</wxs>

@@ -1,10 +1,34 @@
+.my-calendar {
+  width: 100%;
+  min-height: 20rpx;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9997;
+  visibility: hidden;
+  transform: translate3d(0, 100%, 0);
+  transform-origin: center;
+  transition: all 0.4s cubic-bezier(0.77, 0.16, 0.32, 0.95);
+  background-color: #ffffff;
+  border-radius: 24rpx 24rpx 0 0;
+  overflow: hidden;
+}
+
+.my-calendar.show {
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+
 .my-mask {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9996;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 0.4s cubic-bezier(.11,.34,.51,.98);
   visibility: hidden;
@@ -16,29 +40,6 @@
   opacity: 1;
 }
 
-.my-calendar {
-  width: 100%;
-  min-height: 20rpx;
-  padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
-  padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  visibility: hidden;
-  transform: translateY(100%);
-  transition: all 0.4s cubic-bezier(0.77, 0.16, 0.32, 0.95);
-  background-color: #ffffff;
-  border-radius: 24rpx 24rpx 0 0;
-  overflow: hidden;
-}
-
-.my-calendar.show {
-  visibility: visible;
-  transform: translateY(0);
-}
-
 .my-calendar-header {
   position: relative;
   display: flex;
@@ -48,6 +49,7 @@
   box-sizing: border-box;
   height: 80rpx;
   font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.9);
   background-color: #ffffff;
 }
 
@@ -68,7 +70,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32rpx 0;
+  padding: 24rpx 0;
   background-color: #ffffff;
   color: rgba(0, 0, 0, 0.9);
 }
@@ -88,13 +90,16 @@
 .my-calendar-date-time {
   padding: 0 20rpx;
   font-size: 32rpx;
+  font-weight: 500;
 }
 
 .my-calendar-weekdays {
   position: relative;
   display: flex;
+  padding: 0 12rpx;
   box-shadow: 0 16rpx 20rpx -16rpx #efefef;
   background-color: #ffffff;
+  z-index: 3;
 }
 
 .my-calendar-weekdays .my-calendar-weekdays-item {
@@ -117,6 +122,12 @@
   pointer-events: none;
 }
 
+.my-calendar-content {
+  position: relative;
+  min-height: 650rpx;
+  z-index: 2;
+}
+
 .my-calendar-days {
   position: relative;
   padding: 12rpx;
@@ -135,7 +146,23 @@
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-  border-radius: 8rpx;
+  z-index: 2;
+}
+
+.my-calendar-days-item.between {
+  background-color: rgba(86, 119, 252, 0.1);
+}
+
+.my-calendar-days-item.between  > .my-calendar-days-item-date {
+  color: rgba(86, 119, 252);
+}
+
+.my-calendar-days-item.between  > .my-calendar-days-item-lunar {
+  color: rgba(86, 119, 252);
+}
+
+.my-calendar-days-item.disabled {
+  opacity: 0.5;
 }
 
 .my-calendar-days-item-date {
@@ -151,6 +178,7 @@
 
 .my-calendar-days-item.selected {
   background-color: #006eff;
+  border-radius: 8rpx;
 }
 
 .my-calendar-days-item.selected > .my-calendar-days-item-date {
@@ -161,20 +189,30 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
-.my-calendar-days-month-watermark {
+.my-calendar-days-watermark {
   position: absolute;
-  font-size: 180rpx;
-  color: rgba(0, 0, 0, 0.18);
+  font-size: 272rpx;
+  color: rgba(0, 0, 0, 0.10);
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
 }
 
+.my-calendar-selected-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rpx 12rpx;
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+
 .my-calendar-handle {
   padding: 10rpx 30rpx;
   box-shadow: 0 -16rpx 20rpx -16rpx #efefef;
   background-color: #ffffff;
+  z-index: 3;
 }
 
 .my-calendar-btn {
@@ -189,4 +227,52 @@
   border-radius: 76rpx;
   background-color: #006eff;
   color: #ffffff;
+}
+
+.my-calendar-btn.circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(153, 153, 153);
+  font-size: 44rpx;
+}
+
+.ml-18 {
+  margin-left: 18rpx;
+}
+
+.mr-18 {
+  margin-right: 18rpx;
+}
+
+@font-face {
+  font-family: 'my';
+  src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAVgAA0AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAFRAAAABoAAAAci0/w50dERUYAAAUkAAAAHgAAAB4AKQANT1MvMgAAAaAAAABDAAAAVjxuSNNjbWFwAAAB+AAAAEoAAAFS5iPQt2dhc3AAAAUcAAAACAAAAAj//wADZ2x5ZgAAAlQAAAFHAAABvPf29TBoZWFkAAABMAAAADAAAAA2GMsN3WhoZWEAAAFgAAAAHQAAACQHjAOFaG10eAAAAeQAAAATAAAAFgzQAPJsb2NhAAACRAAAABAAAAAQAOoBSG1heHAAAAGAAAAAHgAAACABEwA3bmFtZQAAA5wAAAFJAAACiCnmEVVwb3N0AAAE6AAAADQAAABLUwjqHHjaY2BkYGAAYp5Gj5/x/DZfGbhZGEDg1tUn7+F00P/LzOuY9YFcDgYmkCgAa0gNlHjaY2BkYGBu+N/AEMPCAALM6xgYGVABCwBT4AMaAAAAeNpjYGRgYGBn0GZgYgABEMkFhAwM/8F8BgANaAFLAAB42mNgZGFgnMDAysDA1Ml0hoGBoR9CM75mMGLkAIoysDIzYAUBaa4pDA7PGJ49ZG7438AQw9zA0AAUZgTJAQDrcAy8AHjaY2GAABYIDgLCBQx1AAcEAc8AeNpjYGBgZoBgGQZGBhDwAfIYwXwWBgMgzQGETAwMzxifcTx7+P8/kMUAYUkxS/6VVIXqAgNGNgY4lxGoB6QPBTAyDHsAADDkDYkAAAAAAAAAAAAAADQAagC2AN542m2QsU7DMBCG/Tt1bNPUiUnkSgiVtqKpxJAgVLVbeAa6MaK+B4JXgJWBjY21UtW5gpkdMTFX7dzApaJLhXU6n8+n//ttxtn458N79XJWZ8eMxS00C4wy9A1EP8PQncAlIQzS4WgsVtPpSmwzV3OFRqLetH5TSQMK939X61ptPZ2p2EAttNMLBRMrtschQblDeS34aY50cIkCzg/B2Y5C+VpyQxhFkRgu515O8jvU5mmPM2O0wJ5Z27vhX+yMsV437WvCdTM+GI40MgwKfuGammC0uURqeqFMfe9cxaJclkt5GMaB1hIR1VobOgpEiKq+sLZcIrJWhO3/Jw7qWlYj1Jf21FaCtmd5bevrlk28O/7A4spXTl4KTh9MTlqQ8PESBRstReic+sRj0Dni9fIqmNS/pXNWCvWOeYBmx5S9Bsn9Ah+5WtAAeNp9kD1OAzEQhZ/zByQSQiCoXVEA2vyUKRMp9Ailo0g23pBo1155nUg5AS0VB6DlGByAGyDRcgpelkmTImvt6PObmeexAZzjGwr/3yXuhBWO8ShcwREy4Sr1F+Ea+V24jhY+hRvUf4SbuFUD4RYu1BsdVO2Eu5vSbcsKZxgIV3CKJ+Eq9ZVwjfwqXMcVPoQb1L+EmxjjV7iFa2WpDOFhMEFgnEFjig3jAjEcLJIyBtahOfRmEsxMTzd6ETubOBso71dilwMeaDnngCntPbdmvkon/mDLgdSYbh4FS7YpjS4idCgbXyyc1d2oc7D9nu22tNi/a4E1x+xRDWzU/D3bM9JIbAyvkJI18jK3pBJTj2hrrPG7ZynW814IiU68y/SIx5o0dTr3bmniwOLn8owcfbS5kj33qBw+Y1kIeb/dTsQgil2GP5PYcRkAAAB42mNgYoAALjDJyIAO2MGiTIxMjMyMLIys7GmJeRmlmWZQ2pQ5OSORLaU0Mz2/FACDfwlbAAAAAf//AAIAAQAAAAwAAAAWAAAAAgABAAMABgABAAQAAAACAAAAAHjaY2BgYGQAgqtL1DlA9K2rT97DaABNlwiuAAA=) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.my {
+  font-family: 'my' !important;
+  font-size: 36rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.my-close:before {
+  content: '\e608';
+}
+
+.my-check:before {
+  content: '\e6e1';
+}
+
+.my-arrow-right:before {
+  content: '\e600';
+}
+
+.my-arrow-left:before {
+  content: '\e601';
 }

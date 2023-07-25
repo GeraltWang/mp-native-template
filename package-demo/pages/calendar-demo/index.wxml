@@ -4,4 +4,4 @@
   <!-- <button class="btn" bind:tap="loading">loading</button> -->
   <!-- <button class="btn" bind:tap="hideLoading">hide loading</button> -->
 </view>
-<my-calendar id="my-calendar"></my-calendar>
+<my-calendar id="my-calendar" type="range" value="{{ ['2023-01-22', '2023-02-22'] }}" lunar></my-calendar>

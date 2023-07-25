@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "日历示例",
   "usingComponents": {
-    "my-calendar": "/components/my-calendar/index"
+    "my-calendar": "/components/my-calendar/index",
+    "t-divider": "tdesign-miniprogram/divider/divider"
   }
 }
